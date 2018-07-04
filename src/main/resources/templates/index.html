@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,15 +8,17 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Store with mySQL</h1>
+<h1>myStore</h1>
 <form data-th-action="@{/}">
     <label for="name">Product name</label>
     <input id="name" name="name" type="search" data-th-value="${name}">
 </form>
 <ol>
     <li data-th-each="product : ${products}">
-        <span data-th-text="@{product.name}"></span>
-        <span data-th-text="@{product.price}"></span>
+        <a th:href="@{/{name}(name=${product.name})}">
+        <span data-th-text="${product.name}"></span>
+        <span data-th-text="${product.price}"></span>
+        </a>
     </li>
 </ol>
 </body>

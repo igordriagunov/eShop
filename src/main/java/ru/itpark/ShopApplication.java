@@ -25,15 +25,15 @@ public class ShopApplication {
         ProductService service = context.getBean(ProductService.class);
         ProductRepository repository = context.getBean(ProductRepository.class);
 
-        service.save(
-                new Product(
-                        0,
-                        "xiaomi",
-                        "phone made in china",
-                        100,
-                        12500
-                )
-        );
+//        service.save(
+//                new Product(
+//                        0,
+//                        "xiaomi",
+//                        "phone made in china",
+//                        100,
+//                        12500
+//                )
+//        );
 
 
 //        accountRepository.saveAll(
