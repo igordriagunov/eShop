@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Store with mySQL</h1>
+<form data-th-action="@{/}">
+    <label for="name">Product name</label>
+    <input id="name" name="name" type="search" data-th-value="${name}">
+</form>
+<ol>
+    <li data-th-each="product : ${products}">
+        <span data-th-text="@{product.name}"></span>
+        <span data-th-text="@{product.price}"></span>
+    </li>
+</ol>
+</body>
+</html>
