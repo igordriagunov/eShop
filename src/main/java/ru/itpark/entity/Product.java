@@ -1,38 +1,18 @@
 package ru.itpark.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "products")
-public class Product {
-    @Id
-    @GeneratedValue
+public class Product extends AbstractProduct {
 
+    public Product(int id, String name, String description, int quantity, int price) {
+        super(id, name, description, quantity, price);
+    }
 
-    private int id;
-
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @Column(name = "description", nullable = false)
-    private String description;
-
-    @Column(name = "quantity", nullable = false)
-    private int quantity;
-
-    @Column(name = "price", nullable = false)
-    private int price;
-
-
-//    @ManyToOne
-//    private Account account;
-
-
+    public Product() {
+    }
 }

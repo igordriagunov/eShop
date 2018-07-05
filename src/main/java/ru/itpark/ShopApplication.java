@@ -4,15 +4,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import ru.itpark.entity.Mobile;
 import ru.itpark.entity.Product;
+import ru.itpark.entity.Shirt;
 import ru.itpark.repository.ProductRepository;
 import ru.itpark.service.ProductService;
 //
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import java.util.List;
 
 @SpringBootApplication
 public class ShopApplication {
@@ -23,15 +21,31 @@ public class ShopApplication {
 //        PasswordEncoder encoder = context.getBean(PasswordEncoder.class);
 ////        AccountRepository accountRepository = context.getBean(AccountRepository.class);
         ProductService service = context.getBean(ProductService.class);
-        ProductRepository repository = context.getBean(ProductRepository.class);
+
+        Product prod =  new Mobile(
+                0,
+                "Siemens c65",
+                "phone 2008",
+                1,
+                1500,
+                "2,5",
+                0,
+                "-",
+                650
+        );
+
+        service.save(prod);
+
 
 //        service.save(
-//                new Product(
+//                new Shirt(
 //                        0,
-//                        "xiaomi",
-//                        "phone made in china",
-//                        100,
-//                        12500
+//                        "Nike sport",
+//                        "new collection T-shirt",
+//                        50,
+//                        1699,
+//                        "M / 48-50",
+//                        "black"
 //                )
 //        );
 

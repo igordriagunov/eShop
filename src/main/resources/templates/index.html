@@ -16,8 +16,9 @@
 <ol>
     <li data-th-each="product : ${products}">
         <a th:href="@{/{name}(name=${product.name})}">
-        <span data-th-text="${product.name}"></span>
-        <span data-th-text="${product.price}"></span>
+
+        <!--<span data-th-text="${}"></span>-->
+        <!--<span data-th-text="${}"></span>-->
         </a>
     </li>
 </ol>
