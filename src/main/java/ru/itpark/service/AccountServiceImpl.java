@@ -1,14 +1,20 @@
-package ru.itpark.service;
-
-import org.springframework.context.annotation.Primary;
-
-import org.springframework.stereotype.Service;
-
-import ru.itpark.exception.UsernameAlreadyExistsException;
-
-
-import java.util.List;
-
+//package ru.itpark.service;
+//
+//import org.springframework.context.annotation.Primary;
+//
+//import org.springframework.security.core.authority.SimpleGrantedAuthority;
+//import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UsernameNotFoundException;
+//import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.stereotype.Service;
+//
+//import ru.itpark.exception.UsernameAlreadyExistsException;
+//import ru.itpark.repository.AccountRepository;
+//
+//
+//import java.util.List;
+//
 //@Primary
 //@Service("accountService")
 //public class AccountServiceImpl implements AccountService {

@@ -5,27 +5,27 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.itpark.service.ProductService;
+import ru.itpark.service.MobileService;
 
 @Controller
 @RequestMapping("/")
 public class ProductController {
 
-    private final ProductService productService;
+    private final MobileService mobileService;
 
-    public ProductController(ProductService productService) {
-        this.productService = productService;
+    public ProductController(MobileService mobileService) {
+        this.mobileService = mobileService;
     }
 
     @GetMapping("/")
-    public String getAll(Model model) {
-        model.addAttribute("products", productService.findAll());
+    public String open() {
+
         return "index";
     }
 
     @GetMapping(params = {"name"})
     public String findByName(@RequestParam String name, Model model) {
-        model.addAttribute("products", productService.findByName(name));
+        model.addAttribute("mobiles", mobileService.findByName(name));
         model.addAttribute("name", name);
 
         return "index";

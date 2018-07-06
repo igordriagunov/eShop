@@ -1,25 +1,23 @@
 package ru.itpark.entity;
 
-import lombok.NoArgsConstructor;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "mobiles")
-public class Mobile extends Product {
+public class Mobile extends Product{
 
-    @Column(name = "diagonal", nullable = false)
+    @Column(name = "diagonal")
     private String diagonal;
 
-    @Column(name = "memoryGb", nullable = false)
+    @Column(name = "memoryGb")
     private int memoryGb;
 
-    @Column(name = "processorModel", nullable = false)
+    @Column(name = "processorModel")
     private String processorModel;
 
-    @Column(name = "batteryPower", nullable = false)
+    @Column(name = "batteryPower")
     private int batteryPower;
 
     public Mobile(int id, String name, String description, int quantity, int price, String diagonal, int memoryGb, String processorModel, int batteryPower) {

@@ -12,15 +12,16 @@
 <form data-th-action="@{/}">
     <label for="name">Product name</label>
     <input id="name" name="name" type="search" data-th-value="${name}">
-</form>
-<ol>
-    <li data-th-each="product : ${products}">
-        <a th:href="@{/{name}(name=${product.name})}">
+    <button>Найти</button>
 
-        <!--<span data-th-text="${}"></span>-->
-        <!--<span data-th-text="${}"></span>-->
-        </a>
+    <ol>
+    <li th:each="mobile : ${mobiles}">
+        <a th:href="@{/{name}(name=${mobile.name})}"></a>
+        <span th:text="${mobile.name}"></span>
+        <span th:text="${mobile.price}"></span>
     </li>
 </ol>
+</form>
 </body>
 </html>
+

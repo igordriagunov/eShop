@@ -1,7 +1,5 @@
 package ru.itpark.entity;
 
-import lombok.NoArgsConstructor;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -10,10 +8,10 @@ import javax.persistence.Table;
 @Table(name = "shirts")
 public class Shirt extends Product {
 
-    @Column(name = "size", nullable = false)
+    @Column(name = "size")
     private String size;
 
-    @Column(name = "color", nullable = false)
+    @Column(name = "color")
     private String color;
 
     public Shirt(int id, String name, String description, int quantity, int price, String size, String color) {
