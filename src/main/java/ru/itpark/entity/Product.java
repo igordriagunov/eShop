@@ -66,8 +66,8 @@ public class Product {
         this.price = price;
     }
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private Account account;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    private Account account;
 
 }
 

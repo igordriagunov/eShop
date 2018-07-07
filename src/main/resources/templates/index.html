@@ -21,6 +21,15 @@
         <span th:text="${mobile.price}"></span>
     </li>
 </ol>
+
+    <ol>
+        <li th:each="shirt : ${shirts}">
+            <a th:href="@{/{name}(name=${shirt.name})}"></a>
+            <span th:text="${shirt.name}"></span>
+            <span th:text="${shirt.price}"></span>
+        </li>
+    </ol>
+
 </form>
 </body>
 </html>

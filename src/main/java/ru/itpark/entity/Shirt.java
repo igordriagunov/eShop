@@ -14,8 +14,8 @@ public class Shirt extends Product {
     @Column(name = "color")
     private String color;
 
-    public Shirt(int id, String name, String description, int quantity, int price, String size, String color) {
-        super(id, name, description, quantity, price);
+    public Shirt(int id, String name, String description, int quantity, int price, String size, String color, Account account ) {
+        super(id, name, description, quantity, price, account);
         this.size = size;
         this.color = color;
     }

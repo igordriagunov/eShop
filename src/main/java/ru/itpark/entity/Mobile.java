@@ -2,6 +2,7 @@ package ru.itpark.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +21,8 @@ public class Mobile extends Product{
     @Column(name = "batteryPower")
     private int batteryPower;
 
-    public Mobile(int id, String name, String description, int quantity, int price, String diagonal, int memoryGb, String processorModel, int batteryPower) {
-        super(id, name, description, quantity, price);
+    public Mobile(int id, String name, String description, int quantity, int price, String diagonal, int memoryGb, String processorModel, int batteryPower, Account account ) {
+        super(id, name, description, quantity, price, account);
         this.diagonal = diagonal;
         this.memoryGb = memoryGb;
         this.processorModel = processorModel;
@@ -30,4 +31,6 @@ public class Mobile extends Product{
 
     public Mobile() {
     }
+
+
 }

@@ -3,16 +3,16 @@ package ru.itpark;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-
-//import org.springframework.security.core.authority.SimpleGrantedAuthority;
-//import org.springframework.security.crypto.password.PasswordEncoder;
-
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import ru.itpark.entity.Account;
 import ru.itpark.entity.Mobile;
-//import ru.itpark.entity.Product;
-
-import ru.itpark.repository.MobileRepository;
+import ru.itpark.entity.Shirt;
+import ru.itpark.repository.AccountRepository;
 import ru.itpark.service.MobileService;
-//
+import ru.itpark.service.ShirtService;
+
+import java.util.List;
 
 
 @SpringBootApplication
@@ -21,11 +21,13 @@ public class ShopApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context =
                 SpringApplication.run(ShopApplication.class, args);
-        MobileService service = context.getBean(MobileService.class);
-        MobileRepository repository = context.getBean(MobileRepository.class);
 
+        AccountRepository accountRepository = context.getBean(AccountRepository.class);
+        PasswordEncoder encoder = context.getBean(PasswordEncoder.class);
+        MobileService mobileService = context.getBean(MobileService.class);
+        ShirtService shirtService = context.getBean(ShirtService.class);
 
-        service.save(
+        mobileService.save(
                 new Mobile(
                         0,
                         "xiaomi",
@@ -35,12 +37,13 @@ public class ShopApplication {
                         "5,5",
                         8,
                         "qwer",
-                        4000
+                        4000,
+                        new Account()
                 )
         );
 
 
-        service.save(
+        mobileService.save(
                 new Mobile(
                         0,
                         "samsung s9",
@@ -50,11 +53,12 @@ public class ShopApplication {
                         "6,2",
                         34,
                         "s9s",
-                        3500
+                        3500,
+                        new Account()
                 )
         );
 
-        service.save(
+        mobileService.save(
                 new Mobile(
                         0,
                         "iPhone 8",
@@ -64,36 +68,38 @@ public class ShopApplication {
                         "5,5",
                         32,
                         "a8",
-                        2400
+                        2400,
+                        new Account()
                 )
         );
-//        service.save(
-//                new Shirt(
-//                        0,
-//                        "Nike sport",
-//                        "new collection T-shirt",
-//                        50,
-//                        1699,
-//                        "M / 48-50",
-//                        "black"
-//                )
-//        );
+        shirtService.save(
+                new Shirt(
+                        0,
+                        "Nike sport",
+                        "new collection T-shirt",
+                        50,
+                        1699,
+                        "M / 48-50",
+                        "black",
+                        new Account()
+                )
+        );
 
 
-//        accountRepository.saveAll(
-//                List.of(
-//                        new Account(
-//                                0,
-//                                "admin",
-//                                "user@mail.ru",
-//                                encoder.encode("admin"),
-//                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
-//                                true,
-//                                true,
-//                                true,
-//                                true
-//                        )
-//                )
-//        );
+        accountRepository.saveAll(
+                List.of(
+                        new Account(
+                                0,
+                                "admin",
+                                "user@mail.ru",
+                                encoder.encode("admin"),
+                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
+                                true,
+                                true,
+                                true,
+                                true
+                        )
+                )
+        );
     }
 }
