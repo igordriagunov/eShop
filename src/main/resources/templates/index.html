@@ -6,21 +6,46 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    <!-- CSS  -->
+    <link rel="stylesheet"
+          th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
+
+    <link rel="stylesheet"
+          data-th-href="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css}">
+
+
 </head>
 <body>
 <h1>myStore</h1>
+<div class="row">
+    <div class="col s12 m7">
+        <div class="card">
+            <div class="card-image">
+                <img src="4.jpg">
+                <span class="card-title">e-Store</span>
+            </div>
+            <div class="card-content">
+                <p>Welcome to e-Store. You can find here some products and items. Use the search</p>
+            </div>
+            <div class="card-action">
+                <!--<a href="#">This is a link</a>-->
+            </div>
+        </div>
+    </div>
+</div>
 <form data-th-action="@{/}">
     <label for="name">Product name</label>
     <input id="name" name="name" type="search" data-th-value="${name}">
     <button>Найти</button>
 
     <ol>
-    <li th:each="mobile : ${mobiles}">
-        <a th:href="@{/{name}(name=${mobile.name})}"></a>
-        <span th:text="${mobile.name}"></span>
-        <span th:text="${mobile.price}"></span>
-    </li>
-</ol>
+        <li th:each="mobile : ${mobiles}">
+            <a th:href="@{/{name}(name=${mobile.name})}"></a>
+            <span th:text="${mobile.name}"></span>
+            <span th:text="${mobile.price}"></span>
+        </li>
+    </ol>
 
     <ol>
         <li th:each="shirt : ${shirts}">
@@ -31,6 +56,11 @@
     </ol>
 
 </form>
+
+<!--Import jQuery before materialize.js-->
+<script th:src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js}"></script>
+
 </body>
 </html>
 

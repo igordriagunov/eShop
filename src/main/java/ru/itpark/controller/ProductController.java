@@ -1,10 +1,12 @@
 package ru.itpark.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.itpark.entity.Account;
 import ru.itpark.service.MobileService;
 import ru.itpark.service.ShirtService;
 
@@ -20,7 +22,8 @@ public class ProductController {
     }
 
     @GetMapping("/")
-    public String open() {
+    public String open(Model model, @AuthenticationPrincipal Account account) {
+        model.addAttribute("account",account);
 
         return "index";
     }
