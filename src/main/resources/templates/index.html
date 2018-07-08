@@ -14,49 +14,66 @@
     <link rel="stylesheet"
           data-th-href="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css}">
 
-
 </head>
 <body>
-<h1>myStore</h1>
-<div class="row">
-    <div class="col s12 m7">
-        <div class="card">
-            <div class="card-image">
-                <img src="4.jpg">
-                <span class="card-title">e-Store</span>
-            </div>
-            <div class="card-content">
-                <p>Welcome to e-Store. You can find here some products and items. Use the search</p>
-            </div>
-            <div class="card-action">
-                <!--<a href="#">This is a link</a>-->
+<div class="container">
+    <div class="row">
+        <div class="col s12 m7">
+
+            <h3 th:align="center">yourShop</h3>
+            <a th:href="@{/login}" th:if="${!@accountService.isAuthenticated()}"
+               class="waves-effect black-text text-darken-2 grey lighten-2 btn">Войти</a>
+
+            <div class="card">
+
+                <!--<div class="card-image">-->
+                <!--<img src="4.jpg">-->
+                <!--<span class="card-title">e-Store</span>-->
+                <!--</div>-->
+
+                <div class="card-content">
+                    <p>Welcome to yourShop. You can find here some products and items. Use the search</p>
+                </div>
+                <div class="card-action">
+                    <!--<a href="#">This is a link</a>-->
+                    <form data-th-action="@{/}">
+                        <label for="name">Product name</label>
+                        <input id="name" name="name" type="search" data-th-value="${name}">
+                        <button class="waves-effect grey darken-4 btn" type="submit">Найти</button>
+                        <br>
+                        <br>
+                        <table class="highlight">
+                            <thead>
+                            <tr>
+
+                                <th>Product name</th>
+                                <th>Product price</th>
+                            </tr>
+                            </thead>
+
+                            <tbody th:each="mobile : ${mobiles}">
+                            <tr onclick="window.location.href='@{/{name}(name=${mobile.name})}'; return false">
+
+                                <td th:text="${mobile.name}"></td>
+                                <td th:text="${mobile.price}"></td>
+                            </tr>
+                            </tbody>
+
+                            <tbody th:each="shirt : ${shirts}">
+                            <tr onclick="window.location.href='@{/{name}(name=${shirt.name})}'; return false">
+                                <td th:text="${shirt.name}"></td>
+                                <td th:text="${shirt.price}"></td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<form data-th-action="@{/}">
-    <label for="name">Product name</label>
-    <input id="name" name="name" type="search" data-th-value="${name}">
-    <button>Найти</button>
-
-    <ol>
-        <li th:each="mobile : ${mobiles}">
-            <a th:href="@{/{name}(name=${mobile.name})}"></a>
-            <span th:text="${mobile.name}"></span>
-            <span th:text="${mobile.price}"></span>
-        </li>
-    </ol>
-
-    <ol>
-        <li th:each="shirt : ${shirts}">
-            <a th:href="@{/{name}(name=${shirt.name})}"></a>
-            <span th:text="${shirt.name}"></span>
-            <span th:text="${shirt.price}"></span>
-        </li>
-    </ol>
-
-</form>
-
 <!--Import jQuery before materialize.js-->
 <script th:src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
 <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js}"></script>

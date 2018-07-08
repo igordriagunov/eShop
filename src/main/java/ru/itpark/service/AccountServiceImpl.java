@@ -55,7 +55,7 @@ public class AccountServiceImpl implements AccountService {
                 );
     }
 
-    public void createAccount(String username, String password, String eMail) throws UsernameAlreadyExistsException {
+    public void createAccount(String username,String email, String password) throws UsernameAlreadyExistsException {
         if (accountRepository.findByUsername(username).isPresent()) {
             throw new UsernameAlreadyExistsException("Username already exists");
         }
@@ -63,7 +63,7 @@ public class AccountServiceImpl implements AccountService {
         Account account = new Account(
                 0,
                 username,
-                eMail,
+                email,
                 encoder.encode(password),
                 List.of(new SimpleGrantedAuthority("ROLE_USER")),
                 true,

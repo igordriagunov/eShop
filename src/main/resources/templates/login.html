@@ -16,35 +16,36 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col s12">
-            <br>
-            <a th:href="@{/}" class="waves-effect green lighten-3 btn">Главная</a>
-            <h1>Login</h1>
-            <form name="f" data-th-action="@{/login}" method="post">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input placeholder="Login" id="login" name="username" type="text" class="validate" required>
-                        <label for="login">Login</label>
-                    </div>
+        <div class="col s12 m7">
+            <h3 th:align="center">Login</h3>
+            <div class="card">
+                <div class="card-content">
+                    <form name="f" data-th-action="@{/login}" method="post">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="Login" id="login" name="username" type="text" class="validate"
+                                       required>
+                                <label for="login"></label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="Password" id="password" name="password"
+                                       type="password" class="validate" required>
+                                <label for="password"></label>
+                            </div>
+                        </div>
+                        <button class="waves-effect grey darken-4 btn" type="submit">Войти
+                            <!--<i class="material-icons right">send</i>-->
+                        </button>
+                        <br><br>
+                        <a th:href="@{/}" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Главная</a>
+                    </form>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input placeholder="Password" id="password" name="password"
-                               type="password" class="validate" required>
-                        <label for="password">Password</label>
-                    </div>
-                </div>
-                <button class="waves-effect blue accent-2 btn" type="submit">Войти
-                    <i class="material-icons right">send</i>
-                </button>
-            </form>
+            </div>
         </div>
     </div>
 </div>
-<div data-th-fragment="scriptsFragment">
-    <script type="text/javascript"
-            th:src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
-    <script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js}"></script>
-</div>
+
 </body>
 </html>

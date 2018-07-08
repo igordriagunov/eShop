@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Registration</title>
+
+    <!-- CSS  -->
+    <link rel="stylesheet"
+          th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
+
+    <link rel="stylesheet"
+          data-th-href="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css}">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col s12 m7">
+            <h3 th:align="center">Registration</h3>
+            <div class="card">
+                <div class="card-content">
+                    <form name="name" data-th-action="@{/registration}" method="post">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="username" id="username-label" name="username" type="text"
+                                       class="validate" required>
+                                <label for="username-label"></label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="example123@mail.ru" id="email-label" name="email" type="email"
+                                       class="validate" required>
+                                <label for="email-label"></label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="*********" id="password-label" name="password"
+                                       type="password" class="validate" required>
+                                <label for="password-label"></label>
+                            </div>
+                        </div>
+                        <br>
+                        <button class="waves-effect grey darken-4 btn" type="submit">Зарегистрироваться
+                        </button>
+                        <br><br>
+                        <a th:href="@{/}" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Главная</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
