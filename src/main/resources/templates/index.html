@@ -21,8 +21,14 @@
         <div class="col s12 m7">
 
             <h3 th:align="center">yourShop</h3>
+
+            <form th:if="${@accountService.isAuthenticated()}" data-th-action="@{/logout}" method="post">
+                <button type="submit" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Выйти</button>
+            </form>
             <a th:href="@{/login}" th:if="${!@accountService.isAuthenticated()}"
                class="waves-effect black-text text-darken-2 grey lighten-2 btn">Войти</a>
+            <a th:href="@{/registration}" th:if="${!@accountService.isAuthenticated()}"
+               class="waves-effect black-text text-darken-2 grey lighten-2 btn">Регистрация</a>
 
             <div class="card">
 
@@ -35,7 +41,6 @@
                     <p>Welcome to yourShop. You can find here some products and items. Use the search</p>
                 </div>
                 <div class="card-action">
-                    <!--<a href="#">This is a link</a>-->
                     <form data-th-action="@{/}">
                         <label for="name">Product name</label>
                         <input id="name" name="name" type="search" data-th-value="${name}">

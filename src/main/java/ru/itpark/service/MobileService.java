@@ -26,7 +26,11 @@ public class MobileService {
         return mobileRepository.findAll();
     }
 
-    public List<Mobile> findByName(String name){
+    public List<Mobile> findByName(String name) {
         return mobileRepository.findByNameContains(name);
+    }
+
+    public List<Mobile> findAllByAccountId(int accountId) {
+        return mobileRepository.findAllByAccount_Id(accountId);
     }
 }

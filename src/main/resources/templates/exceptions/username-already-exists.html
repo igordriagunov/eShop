@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}"
+          rel="stylesheet">
+    <link rel="stylesheet"
+          data-th-href="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css}">
+
+    <title>Username Already Exists</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            <br>
+            <a data-th-href="@{/}" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Главная</a>
+
+            <h3 data-th-text="${message}"></h3>
+        </div>
+    </div>
+</div>
+
+<!--Import jQuery before materialize.js-->
+<script th:src="@{https://code.jquery.com/jquery-3.2.1.min.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js}"></script>
+
+</body>
+</html>

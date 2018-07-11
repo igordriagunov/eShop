@@ -57,7 +57,7 @@ public class AccountServiceImpl implements AccountService {
 
     public void createAccount(String username,String email, String password) throws UsernameAlreadyExistsException {
         if (accountRepository.findByUsername(username).isPresent()) {
-            throw new UsernameAlreadyExistsException("Username already exists");
+            throw new UsernameAlreadyExistsException("Username already exists / Пользователь с таким именем уже существует");
         }
 
         Account account = new Account(

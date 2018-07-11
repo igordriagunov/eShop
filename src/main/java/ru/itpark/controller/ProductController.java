@@ -3,15 +3,11 @@ package ru.itpark.controller;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import ru.itpark.entity.Account;
-import ru.itpark.service.AccountService;
-import ru.itpark.service.AccountServiceImpl;
-import ru.itpark.service.MobileService;
-import ru.itpark.service.ShirtService;
+import ru.itpark.entity.Mobile;
+import ru.itpark.entity.Product;
+import ru.itpark.service.*;
 
 @Controller
 @RequestMapping("/")
@@ -56,5 +52,21 @@ public class ProductController {
         return "redirect:/login";
     }
 
+    @GetMapping("account-products")
+    public String getAccountProducts(Model model, @AuthenticationPrincipal Account account) {
+        model.addAttribute("account", account);
+        model.addAttribute("products", mobileService.findAllByAccountId(account.getId()));
+
+        return "account-products";
+    }
+
+    @PostMapping("account-products")
+    public String addProductToAccount(@ModelAttribute Mobile mobile, @AuthenticationPrincipal Account account) {
+        mobile.setAccount(account);
+        mobileService.save(mobile);
+
+        return "redirect:/account-products";
+
+    }
 
 }

@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 //import ru.itpark.entity.AbstractProduct;
 import ru.itpark.entity.Mobile;
+import ru.itpark.entity.Product;
 //import ru.itpark.entity.Product;
 
 
@@ -15,4 +16,9 @@ public interface MobileRepository
 
 
     List<Mobile> findByNameContains(String name);
+
+    @Override
+    List<Mobile> findAllById(Iterable<Integer> iterable);
+
+    List<Mobile> findAllByAccount_Id(int accountId);
 }

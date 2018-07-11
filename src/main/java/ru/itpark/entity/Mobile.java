@@ -1,9 +1,6 @@
 package ru.itpark.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "mobiles")
@@ -20,6 +17,9 @@ public class Mobile extends Product{
 
     @Column(name = "batteryPower")
     private int batteryPower;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    Account account;
 
     public Mobile(int id, String name, String description, int quantity, int price, String diagonal, int memoryGb, String processorModel, int batteryPower, Account account ) {
         super(id, name, description, quantity, price, account);

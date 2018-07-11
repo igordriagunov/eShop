@@ -1,11 +1,13 @@
 package ru.itpark.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @MappedSuperclass
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Product {
@@ -25,6 +27,11 @@ public class Product {
 
     @Column(name = "price", nullable = false)
     private int price;
+
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    private Account account;
+
 
     public int getId() {
         return id;
@@ -66,8 +73,7 @@ public class Product {
         this.price = price;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    private Account account;
+
 
 }
 
