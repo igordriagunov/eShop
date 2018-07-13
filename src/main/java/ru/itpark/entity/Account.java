@@ -10,17 +10,26 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 
+
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//public class Account {
+@Table(name = "accounts")
 public class Account implements UserDetails {
+
     @Id
+    @Column(name = "id")
     @GeneratedValue
     private int id;
+
+    @Column(name = "username")
     private String username;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "password")
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)
@@ -29,5 +38,6 @@ public class Account implements UserDetails {
     private boolean isAccountNonLocked;
     private boolean isCredentialsNonExpired;
     private boolean isEnabled;
+
 
 }

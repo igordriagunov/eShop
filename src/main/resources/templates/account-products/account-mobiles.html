@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- CSS  -->
+    <link rel="stylesheet"
+          th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
+
+    <link rel="stylesheet"
+          data-th-href="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css}">
+    <title>Account Mobiles</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m7">
+
+            <h3 th:align="center">My products</h3>
+            <a th:href="@{/}" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Главная</a>
+            <br>
+
+            <div class="card-action">
+                <form th:if="${@accountService.isAuthenticated()}" th:action="@{/account-mobiles}" method="post">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="some product name" id="name-label" name="name" type="text"
+                                   class="validate" required>
+                            <label for="name-label"></label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="some product description" id="description-label" name="description"
+                                   type="text"
+                                   class="validate" required>
+                            <label for="description-label"></label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="some product quantity" id="quantity-label" name="quantity"
+                                   type="text" class="validate" required>
+                            <label for="quantity-label"></label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="some product price" id="price-label" name="price" type="text"
+                                   class="validate" required>
+                            <label for="price-label"></label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="mobile diagonal" id="diagonal-label" name="diagonal" type="text"
+                                   class="validate" required>
+                            <label for="diagonal-label"></label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="mobile memoryGb" id="memoryGb-label" name="memoryGb" type="text"
+                                   class="validate" required>
+                            <label for="memoryGb-label"></label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="mobile processor model" id="processorModel-label" name="processorModel"
+                                   type="text"
+                                   class="validate" required>
+                            <label for="processorModel-label"></label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input placeholder="mobile battery power" id="batteryPower-label" name="batteryPower"
+                                   type="text"
+                                   class="validate" required>
+                            <label for="batteryPower-label"></label>
+                        </div>
+                    </div>
+                    <br>
+                    <button class="waves-effect grey darken-4 btn" type="submit">Добавить
+                    </button>
+                    <br><br>
+
+                    <!--<table class="highlight">-->
+                        <!--<thead>-->
+                        <!--<tr>-->
+
+                            <!--<th>Product name</th>-->
+                            <!--<th>Product price</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+
+                        <!--<tbody th:each="mobile : ${mobiles}">-->
+                        <!--<tr onclick="window.location.href='@/{account-mobiles/{id}(id=${mobile.id})}'; return false">-->
+
+                            <!--<td th:text="${mobile.name}"></td>-->
+                            <!--<td th:text="${mobile.description}"></td>-->
+                            <!--<td th:text="${mobile.quantity}"></td>-->
+                            <!--<td th:text="${mobile.price}"></td>-->
+                            <!--<td th:text="${mobile.diagonal}"></td>-->
+                            <!--<td th:text="${mobile.memoryGb}"></td>-->
+                            <!--<td th:text="${mobile.processorModel}"></td>-->
+                            <!--<td th:text="${mobile.batteryPower}"></td>-->
+
+                        <!--</tr>-->
+                        <!--</tbody>-->
+
+                    <!--</table>-->
+
+                    <br>
+                    <ul class="collection">
+                        <li class="collection-item" th:each="mobile : ${mobiles}">
+                            <a th:href="@{/account-mobiles/{id} (id=${mobile.id}) }">
+
+                                <span th:text="${mobile.name}"></span><br>
+                                <span th:text="${mobile.price}"></span><br>
+                                <!--<span th:text="${car.regNumber}"></span>-->
+                            </a>
+                        </li>
+                    </ul>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

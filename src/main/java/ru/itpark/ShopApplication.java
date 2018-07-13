@@ -27,63 +27,66 @@ public class ShopApplication {
         MobileService mobileService = context.getBean(MobileService.class);
         ShirtService shirtService = context.getBean(ShirtService.class);
 
-        mobileService.save(
-                new Mobile(
-                        0,
-                        "xiaomi",
-                        "phone made in china",
-                        100,
-                        12500,
-                        "5,5",
-                        8,
-                        "qwer",
-                        4000,
-                        new Account()
-                )
-        );
-
-
-        mobileService.save(
-                new Mobile(
-                        0,
-                        "samsung s9",
-                        "phone made in korea",
-                        155,
-                        66500,
-                        "6,2",
-                        34,
-                        "s9s",
-                        3500,
-                        new Account()
-                )
-        );
-
-        mobileService.save(
-                new Mobile(
-                        0,
-                        "iPhone 8",
-                        "smartphone made in china",
-                        100,
-                        44000,
-                        "5,5",
-                        32,
-                        "a8",
-                        2400,
-                        new Account()
-                )
-        );
-        shirtService.save(
-                new Shirt(
-                        0,
-                        "Nike sport",
-                        "new collection T-shirt",
-                        50,
-                        1699,
-                        "M / 48-50",
-                        "black",
-                        new Account()
-                )
-        );
+//        mobileService.save(
+//                new Mobile(
+//                        0,
+//                        "xiaomi",
+//                        "phone made in china",
+//                        100,
+//                        12500,
+//                        "5,5",
+//                        "8",
+//                        "qwer",
+//                        "4000",
+//                        new Account()
+//                )
+//        );
+//
+//
+//        mobileService.save(
+//                new Mobile(
+//                        0,
+//                        "samsung s9",
+//                        "phone made in korea",
+//                        155,
+//                        66500,
+//                        "6,2",
+//                        "34",
+//                        "s9s",
+//                        "3500",
+//                        new Account()
+//
+//                )
+//        );
+//
+//        mobileService.save(
+//                new Mobile(
+//                        0,
+//                        "iPhone 8",
+//                        "smartphone made in china",
+//                        100,
+//                        44000,
+//                        "5,5",
+//                        "32",
+//                        "a8",
+//                        "2400",
+//                        new Account()
+//
+//                )
+//        );
+//        shirtService.save(
+//                new Shirt(
+//                        0,
+//                        "Nike sport",
+//                        "new collection T-shirt",
+//                        50,
+//                        1699,
+//                        "M / 48-50",
+//                        "black",
+//                        new Account()
+//
+//                )
+//        );
 
 
         accountRepository.saveAll(
@@ -91,7 +94,7 @@ public class ShopApplication {
                         new Account(
                                 0,
                                 "admin",
-                                "user@mail.ru",
+                                "admin@mail.ru",
                                 encoder.encode("admin"),
                                 List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
                                 true,

@@ -8,6 +8,7 @@ import ru.itpark.entity.Mobile;
 import ru.itpark.repository.MobileRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MobileService {
@@ -32,5 +33,9 @@ public class MobileService {
 
     public List<Mobile> findAllByAccountId(int accountId) {
         return mobileRepository.findAllByAccount_Id(accountId);
+    }
+
+    public Optional<Mobile> findById(int id) {
+        return mobileRepository.findById(id);
     }
 }

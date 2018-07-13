@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.itpark.entity.Account;
 import ru.itpark.entity.Mobile;
-import ru.itpark.entity.Product;
 import ru.itpark.service.*;
 
 @Controller
@@ -52,21 +51,28 @@ public class ProductController {
         return "redirect:/login";
     }
 
-    @GetMapping("account-products")
+    @GetMapping("account-mobiles")
     public String getAccountProducts(Model model, @AuthenticationPrincipal Account account) {
         model.addAttribute("account", account);
-        model.addAttribute("products", mobileService.findAllByAccountId(account.getId()));
+        model.addAttribute("mobiles", mobileService.findAllByAccountId(account.getId()));
 
-        return "account-products";
+        return "account-products/account-mobiles";
     }
 
-    @PostMapping("account-products")
-    public String addProductToAccount(@ModelAttribute Mobile mobile, @AuthenticationPrincipal Account account) {
+    @PostMapping("account-mobiles")
+    public String addMobileToAccount(@ModelAttribute Mobile mobile, @AuthenticationPrincipal Account account) {
         mobile.setAccount(account);
         mobileService.save(mobile);
 
-        return "redirect:/account-products";
+        return "redirect:/account-mobiles";
 
+    }
+
+    @GetMapping("account-mobiles/{id}")
+    public String getMobiles(@PathVariable int id, Model model) {
+        model.addAttribute("mobile", mobileService.findById(id));
+
+        return "entities/mobile";
     }
 
 }

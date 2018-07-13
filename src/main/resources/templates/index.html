@@ -29,6 +29,8 @@
                class="waves-effect black-text text-darken-2 grey lighten-2 btn">Войти</a>
             <a th:href="@{/registration}" th:if="${!@accountService.isAuthenticated()}"
                class="waves-effect black-text text-darken-2 grey lighten-2 btn">Регистрация</a>
+            <a th:href="@{/account-mobiles}" th:if="${@accountService.isAuthenticated()}"
+               class="waves-effect black-text text-darken-2 grey lighten-2 btn">Мои товары</a>
 
             <div class="card">
 

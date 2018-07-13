@@ -3,6 +3,8 @@ package ru.itpark.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 
@@ -29,8 +31,14 @@ public class Product {
     private int price;
 
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    private Account account;
+    //    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+//    @JoinColumn(name = "accountId", nullable = false, foreignKey = @ForeignKey(name = "FK_accountId"))
+//    @OnDelete(action = OnDeleteAction.CASCADE)
+//    private Account account;
+
+//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL,optional = false)
+//    @JoinColumn(name = "account_accountId")
+//    private Account account;
 
 
     public int getId() {
@@ -72,8 +80,6 @@ public class Product {
     public void setPrice(int price) {
         this.price = price;
     }
-
-
 
 }
 
