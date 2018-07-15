@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.itpark.entity.Account;
 import ru.itpark.entity.Mobile;
+import ru.itpark.entity.Shirt;
 import ru.itpark.service.*;
 
 @Controller
@@ -51,28 +52,57 @@ public class ProductController {
         return "redirect:/login";
     }
 
-    @GetMapping("account-mobiles")
+    @GetMapping("all-products")
     public String getAccountProducts(Model model, @AuthenticationPrincipal Account account) {
         model.addAttribute("account", account);
         model.addAttribute("mobiles", mobileService.findAllByAccountId(account.getId()));
+        model.addAttribute("shirts", shirtService.findAllByAccountId(account.getId()));
 
-        return "account-products/account-mobiles";
+        return "account/all-products";
     }
 
-    @PostMapping("account-mobiles")
+    @GetMapping("add-mobile")
+    public String getAddMobileForm(Model model, @AuthenticationPrincipal Account account) {
+        model.addAttribute("account", account);
+
+        return "account/add-mobile";
+    }
+
+    @PostMapping("add-mobile")
     public String addMobileToAccount(@ModelAttribute Mobile mobile, @AuthenticationPrincipal Account account) {
         mobile.setAccount(account);
         mobileService.save(mobile);
 
-        return "redirect:/account-mobiles";
-
+        return "redirect:/all-products";
     }
 
-    @GetMapping("account-mobiles/{id}")
-    public String getMobiles(@PathVariable int id, Model model) {
+    @GetMapping("add-shirt")
+    public String getAddShirtForm(Model model, @AuthenticationPrincipal Account account) {
+        model.addAttribute("account", account);
+
+        return "account/add-shirt";
+    }
+
+    @PostMapping("add-shirt")
+    public String addShirtToAccount(@ModelAttribute Shirt shirt, @AuthenticationPrincipal Account account) {
+        shirt.setAccount(account);
+        shirtService.save(shirt);
+
+        return "redirect:/all-products";
+    }
+
+    @GetMapping("all-products/{id}")
+    public String getMobileById(@PathVariable int id, Model model) {
         model.addAttribute("mobile", mobileService.findById(id));
 
         return "entities/mobile";
     }
+
+//    @GetMapping("shirt/{id}")
+//    public String getShirtById(@PathVariable int id, Model model) {
+//        model.addAttribute("shirt", shirtService.findById(id));
+//
+//        return "entities/shirt";
+//    }
 
 }

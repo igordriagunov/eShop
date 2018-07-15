@@ -16,4 +16,9 @@ public interface ShirtRepository
 
 
     List<Shirt> findByNameContains(String name);
+
+    @Override
+    List<Shirt> findAllById(Iterable<Integer> iterable);
+
+    List<Shirt> findAllByAccount_Id(int accountId);
 }

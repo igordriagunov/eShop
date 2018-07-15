@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- CSS  -->
+    <link rel="stylesheet"
+          th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
+
+    <link rel="stylesheet"
+          data-th-href="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css}">
+    <title>Account products</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col s12 m7">
+            <h3 th:align="center">All your products</h3>
+
+            <a th:href="@{/}" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Главная</a>
+            <br>
+            <a th:href="@{/add-mobile}" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Добавить
+                "Мобильный телефон"</a>
+            <br>
+            <a th:href="@{/add-shirt}" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Добавить
+                "Футболку"</a>
+
+            <div class="card">
+                <div class="card-action">
+                    <form data-th-action="@{/all-products}">
+                        <table class="highlight">
+                            <thead>
+                            <tr>
+
+                                <th> name</th>
+                                <th> price</th>
+                            </tr>
+                            </thead>
+
+                            <tbody th:each="mobile : ${mobiles}">
+                            <tr onclick="window.location.href='@{all-products/{id}(id=${mobile.id})}'; return false">
+                                <td th:text="${mobile.name}"></td>
+                                <td th:text="${mobile.price}"></td>
+                            </tr>
+                            </tbody>
+
+                            <tbody th:each="shirt : ${shirts}">
+                            <tr onclick="window.location.href='@{all-products/{id}(id=${shirt.id})}'; return false">
+                                <td th:text="${shirt.name}"></td>
+                                <td th:text="${shirt.price}"></td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+
+
+                        <!--<ul>-->
+                        <!--<li th:each="mobile : ${mobiles}">-->
+                        <!--<a th:href="@{/all-products/{id} (id=${mobile.id}) }">-->
+
+                        <!--<span th:text="${mobile.name}"></span><br>-->
+                        <!--<span th:text="${mobile.price}"></span><br>-->
+
+                        <!--</a>-->
+                        <!--</li>-->
+                        <!--</ul>-->
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

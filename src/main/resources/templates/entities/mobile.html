@@ -2,11 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Mobiles</title>
+    <title>Product</title>
 </head>
 <body>
 
-<span class="card-title" th:text="${mobile.name}"></span>
+<span class="card-title" th:text="${mobile.get().name}"></span>
+<span class="card-title" th:text="${mobile.get().description}"></span>
+<span class="card-title" th:text="${mobile.get().quantity}"></span>
+<span class="card-title" th:text="${mobile.get().price}"></span>
+<span class="card-title" th:text="${mobile.get().batteryPower}"></span>
+<span class="card-title" th:text="${mobile.get().diagonal}"></span>
+<span class="card-title" th:text="${mobile.get().processorModel}"></span>
+
+<!---->
+
+<!--<span class="card-title" th:text="${shirt.get().name}"></span>-->
+<!--<span class="card-title" th:text="${shirt.get().description}"></span>-->
+<!--<span class="card-title" th:text="${shirt.get().quantity}"></span>-->
+<!--<span class="card-title" th:text="${shirt.get().price}"></span>-->
+<!--<span class="card-title" th:text="${shirt.get().color}"></span>-->
+<!--<span class="card-title" th:text="${shirt.get().size}"></span>-->
+
 
 </body>
 </html>

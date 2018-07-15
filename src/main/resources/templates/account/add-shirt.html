@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- CSS  -->
+    <link rel="stylesheet"
+          th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
+
+    <link rel="stylesheet"
+          data-th-href="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css}">
+    <title>Account Mobiles</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m7">
+
+            <h3 th:align="center">Add shirt</h3>
+            <a th:href="@{/}" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Главная</a>
+            <br>
+            <div class="card">
+                <div class="card-content">
+                    <form th:if="${@accountService.isAuthenticated()}" th:action="@{/add-shirt}" method="post">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="product name" id="name-label" name="name" type="text"
+                                       class="validate" required>
+                                <label for="name-label"></label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="product description" id="description-label" name="description"
+                                       type="text"
+                                       class="validate" required>
+                                <label for="description-label"></label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="product quantity" id="quantity-label" name="quantity"
+                                       type="text" class="validate" required>
+                                <label for="quantity-label"></label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="product price" id="price-label" name="price" type="text"
+                                       class="validate" required>
+                                <label for="price-label"></label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="size" id="size-label" name="size" type="text"
+                                       class="validate" required>
+                                <label for="size-label"></label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input placeholder="color" id="color-label" name="color" type="text"
+                                       class="validate" required>
+                                <label for="color-label"></label>
+                            </div>
+                        </div>
+                        <br>
+                        <button class="waves-effect grey darken-4 btn" type="submit">Добавить
+                        </button>
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

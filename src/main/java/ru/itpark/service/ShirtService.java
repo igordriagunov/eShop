@@ -5,6 +5,7 @@ import ru.itpark.entity.Shirt;
 import ru.itpark.repository.ShirtRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 //import ru.itpark.entity.Product;
 
@@ -27,5 +28,13 @@ public class ShirtService {
 
     public List<Shirt> findByName(String name){
         return shirtRepository.findByNameContains(name);
+    }
+
+    public List<Shirt> findAllByAccountId(int accountId){
+        return shirtRepository.findAllByAccount_Id(accountId);
+    }
+
+    public Optional<Shirt> findById(int id) {
+        return shirtRepository.findById(id);
     }
 }
