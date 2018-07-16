@@ -106,4 +106,11 @@ public class ProductController {
 
         return "entities/mobile";
     }
+
+    @PostMapping("add-shirt/{id}/remove")
+    public String remove(@PathVariable int id, @AuthenticationPrincipal Account account, @ModelAttribute Shirt shirt) {
+        shirtService.deleteById(id);
+
+        return "redirect:/add-shirt";
+    }
 }

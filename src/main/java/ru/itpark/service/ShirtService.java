@@ -37,4 +37,8 @@ public class ShirtService {
     public Optional<Shirt> findById(int id) {
         return shirtRepository.findById(id);
     }
+
+    public void deleteById(int id) {
+        shirtRepository.deleteById(id);
+    }
 }

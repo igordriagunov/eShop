@@ -74,28 +74,58 @@ public class ShopApplication {
 //
 //                )
 //        );
-//        shirtService.save(
-//                new Shirt(
-//                        0,
-//                        "Nike sport",
-//                        "new collection T-shirt",
-//                        50,
-//                        1699,
-//                        "M / 48-50",
-//                        "black",
-//                        new Account()
-//
-//                )
-//        );
+
+        shirtService.save(
+                new Shirt(
+                        1,
+                        "Nike sport",
+                        "new collection T-shirt",
+                        4,
+                        1699,
+                        "M / 48-50",
+                        "black",
+                        new Account()
+
+                )
+        );
+
+        shirtService.save(
+                new Shirt(
+                        2,
+                        "abibas",
+                        "new collection T-shirt",
+                        4,
+                        1399,
+                        "M / 48-50",
+                        "black",
+                        new Account()
+
+                )
+        );
 
 
         accountRepository.saveAll(
                 List.of(
                         new Account(
-                                0,
+                                1,
                                 "admin",
                                 "admin@mail.ru",
                                 encoder.encode("admin"),
+                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
+                                true,
+                                true,
+                                true,
+                                true
+                        )
+                )
+        );
+        accountRepository.saveAll(
+                List.of(
+                        new Account(
+                                2,
+                                "user",
+                                "user@mail.ru",
+                                encoder.encode("user"),
                                 List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
                                 true,
                                 true,
