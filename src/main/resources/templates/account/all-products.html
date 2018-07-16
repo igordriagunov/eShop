@@ -36,21 +36,29 @@
                             <tr>
 
                                 <th> name</th>
+                                <th> description</th>
                                 <th> price</th>
+                                <th> quantity</th>
                             </tr>
                             </thead>
 
                             <tbody th:each="mobile : ${mobiles}">
-                            <tr onclick="window.location.href='@{all-products/{id}(id=${mobile.id})}'; return false">
+                            <!--<tr onclick="window.location.href='@{all-products/{id}(id=${mobile.id})}'; return false">-->
+                            <tr>
                                 <td th:text="${mobile.name}"></td>
+                                <td th:text="${mobile.description}"></td>
                                 <td th:text="${mobile.price}"></td>
+                                <td th:text="${mobile.quantity}"></td>
                             </tr>
                             </tbody>
 
                             <tbody th:each="shirt : ${shirts}">
-                            <tr onclick="window.location.href='@{all-products/{id}(id=${shirt.id})}'; return false">
+                            <!--<tr onclick="window.location.href='@{all-products/{id}(id=${shirt.id})}'; return false">-->
+                            <tr>
                                 <td th:text="${shirt.name}"></td>
+                                <td th:text="${shirt.description}"></td>
                                 <td th:text="${shirt.price}"></td>
+                                <td th:text="${shirt.quantity}"></td>
                             </tr>
                             </tbody>
 
@@ -63,6 +71,17 @@
 
                         <!--<span th:text="${mobile.name}"></span><br>-->
                         <!--<span th:text="${mobile.price}"></span><br>-->
+
+                        <!--</a>-->
+                        <!--</li>-->
+                        <!--</ul>-->
+
+                        <!--<ul>-->
+                        <!--<li th:each="shirt : ${shirts}">-->
+                        <!--<a th:href="@{/all-products/{id} (id=${shirt.id}) }">-->
+
+                        <!--<span th:text="${shirt.name}"></span><br>-->
+                        <!--<span th:text="${shirt.price}"></span><br>-->
 
                         <!--</a>-->
                         <!--</li>-->

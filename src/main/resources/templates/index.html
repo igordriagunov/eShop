@@ -41,40 +41,61 @@
 
                 <div class="card-content">
                     <p>Welcome to yourShop. You can find here some products and items. Use the search</p>
-                </div>
-                <div class="card-action">
+
+
                     <form data-th-action="@{/}">
-                        <label for="name">Product name</label>
-                        <input id="name" name="name" type="search" data-th-value="${name}">
+                        <label for="name">Enter product name</label>
+                        <input id="name" name="name" type="search" data-th-value="${name}" required>
                         <button class="waves-effect grey darken-4 btn" type="submit">Найти</button>
                         <br>
                         <br>
-                        <table class="highlight">
-                            <thead>
-                            <tr>
+                        <!--<table class="highlight">-->
+                        <!--<thead>-->
+                        <!--<tr>-->
 
-                                <th> name</th>
-                                <th> price</th>
-                            </tr>
-                            </thead>
+                        <!--<th> name</th>-->
+                        <!--<th> price</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
 
-                            <tbody th:each="mobile : ${mobiles}">
-                            <tr onclick="window.location.href='@{/{name}(name=${mobile.name})}'; return false">
+                        <!--<tbody th:each="mobile : ${mobiles}">-->
+                        <!--&lt;!&ndash;<tr onclick="window.location.href='@{/add-shirt/{id} (id=${shirt.id}) }';return false">&ndash;&gt;-->
+                        <!--<tr>-->
+                        <!--<td th:text="${mobile.name}"></td>-->
+                        <!--<td th:text="${mobile.price}"></td>-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
 
-                                <td th:text="${mobile.name}"></td>
-                                <td th:text="${mobile.price}"></td>
-                            </tr>
-                            </tbody>
+                        <!--<tbody th:each="shirt : ${shirts}">-->
+                        <!--<tr th:href="@{add-shirt/{id} (id=${shirt.id}) }">-->
+                        <!--<td th:text="${shirt.name}"></td>-->
+                        <!--<td th:text="${shirt.price}"></td>-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
 
-                            <tbody th:each="shirt : ${shirts}">
-                            <tr onclick="window.location.href='@{/{name}(name=${shirt.name})}'; return false">
-                                <td th:text="${shirt.name}"></td>
-                                <td th:text="${shirt.price}"></td>
-                            </tr>
-                            </tbody>
+                        <!--</table>-->
 
-                        </table>
+                        <ul class="collection">
+                            <li class="collection-item" th:each="mobile : ${mobiles}">
+                                <a th:href="@{/add-mobile/{id} (id=${mobile.id}) }">
 
+                                    <span th:text="${mobile.name}">-</span>
+                                    <span th:text="${mobile.price}">-</span>
+
+                                </a>
+                            </li>
+                        </ul>
+
+                        <ul class="collection">
+                            <li class="collection-item" th:each="shirt : ${shirts}">
+                                <a th:href="@{/add-shirt/{id} (id=${shirt.id}) }">
+
+                                    <span th:text="${shirt.name}">-</span>
+                                    <span th:text="${shirt.price}" th:align="right">-</span>
+
+                                </a>
+                            </li>
+                        </ul>
                     </form>
                 </div>
             </div>

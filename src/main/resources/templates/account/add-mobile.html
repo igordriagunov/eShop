@@ -28,15 +28,16 @@
                     <form th:if="${@accountService.isAuthenticated()}" th:action="@{/add-mobile}" method="post">
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="some product name" id="name-label" name="name" type="text"
-                                       class="validate" required>
+
                                 <label for="name-label"></label>
+                                <input id="name-label" name="name" type="text"
+                                       placeholder="product name"  class="validate" required>
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="some product description" id="description-label" name="description"
+                                <input placeholder="product description" id="description-label" name="description"
                                        type="text"
                                        class="validate" required>
                                 <label for="description-label"></label>
@@ -45,7 +46,7 @@
                         <br>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="some product quantity" id="quantity-label" name="quantity"
+                                <input placeholder="product quantity" id="quantity-label" name="quantity"
                                        type="text" class="validate" required>
                                 <label for="quantity-label"></label>
                             </div>
@@ -53,7 +54,7 @@
                         <br>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="some product price" id="price-label" name="price" type="text"
+                                <input placeholder="product price" id="price-label" name="price" type="text"
                                        class="validate" required>
                                 <label for="price-label"></label>
                             </div>
@@ -61,7 +62,7 @@
                         <br>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="mobile diagonal" id="diagonal-label" name="diagonal" type="text"
+                                <input placeholder="screen diagonal" id="diagonal-label" name="diagonal" type="text"
                                        class="validate" required>
                                 <label for="diagonal-label"></label>
                             </div>
@@ -69,7 +70,7 @@
                         <br>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="mobile memoryGb" id="memoryGb-label" name="memoryGb" type="text"
+                                <input placeholder="memory Gb" id="memoryGb-label" name="memoryGb" type="text"
                                        class="validate" required>
                                 <label for="memoryGb-label"></label>
                             </div>
@@ -77,7 +78,7 @@
                         <br>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="mobile processor model" id="processorModel-label"
+                                <input placeholder="processor model" id="processorModel-label"
                                        name="processorModel"
                                        type="text"
                                        class="validate" required>
@@ -87,7 +88,7 @@
                         <br>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input placeholder="mobile battery power" id="batteryPower-label" name="batteryPower"
+                                <input placeholder="battery power mA" id="batteryPower-label" name="batteryPower"
                                        type="text"
                                        class="validate" required>
                                 <label for="batteryPower-label"></label>
@@ -96,22 +97,19 @@
                         <br>
                         <button class="waves-effect grey darken-4 btn" type="submit">Добавить
                         </button>
-                        <br><br>
 
+                        <br>
+                        <br>
 
+                        <ol class="collection">
+                            <li class="collection-item" th:each="mobile : ${mobiles}">
+                                <a th:href="@{/add-mobile/{id} (id=${mobile.id}) }">
 
-                        <!--<br>-->
-                        <!--<ul class="collection">-->
-                            <!--<li class="collection-item" th:each="mobile : ${mobiles}">-->
-                                <!--<a th:href="@{/account-mobiles/{id} (id=${mobile.id}) }">-->
-
-                                    <!--<span th:text="${mobile.name}"></span><br>-->
-                                    <!--<span th:text="${mobile.price}"></span><br>-->
-                                    <!--&lt;!&ndash;<span th:text="${car.regNumber}"></span>&ndash;&gt;-->
-                                <!--</a>-->
-                            <!--</li>-->
-                        <!--</ul>-->
-
+                                    <span th:text="${mobile.name}">-</span>
+                                    <span th:text="${mobile.price}">-</span>
+                                </a>
+                            </li>
+                        </ol>
 
                     </form>
                 </div>

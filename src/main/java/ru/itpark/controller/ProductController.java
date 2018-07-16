@@ -64,6 +64,7 @@ public class ProductController {
     @GetMapping("add-mobile")
     public String getAddMobileForm(Model model, @AuthenticationPrincipal Account account) {
         model.addAttribute("account", account);
+        model.addAttribute("mobiles", mobileService.findAllByAccountId(account.getId()));
 
         return "account/add-mobile";
     }
@@ -73,12 +74,13 @@ public class ProductController {
         mobile.setAccount(account);
         mobileService.save(mobile);
 
-        return "redirect:/all-products";
+        return "redirect:/add-mobile";
     }
 
     @GetMapping("add-shirt")
     public String getAddShirtForm(Model model, @AuthenticationPrincipal Account account) {
         model.addAttribute("account", account);
+        model.addAttribute("shirts",shirtService.findAllByAccountId(account.getId()));
 
         return "account/add-shirt";
     }
@@ -88,21 +90,20 @@ public class ProductController {
         shirt.setAccount(account);
         shirtService.save(shirt);
 
-        return "redirect:/all-products";
+        return "redirect:/add-shirt";
     }
 
-    @GetMapping("all-products/{id}")
+    @GetMapping("add-shirt/{id}")
+    public String getShirtById(@PathVariable int id, Model model) {
+        model.addAttribute("shirt", shirtService.findById(id));
+
+        return "entities/shirt";
+    }
+
+    @GetMapping("add-mobile/{id}")
     public String getMobileById(@PathVariable int id, Model model) {
         model.addAttribute("mobile", mobileService.findById(id));
 
         return "entities/mobile";
     }
-
-//    @GetMapping("shirt/{id}")
-//    public String getShirtById(@PathVariable int id, Model model) {
-//        model.addAttribute("shirt", shirtService.findById(id));
-//
-//        return "entities/shirt";
-//    }
-
 }

@@ -78,6 +78,18 @@
                         <button class="waves-effect grey darken-4 btn" type="submit">Добавить
                         </button>
                         <br>
+                        <br>
+
+                        <ol class="collection">
+                            <li class="collection-item" th:each="shirt : ${shirts}">
+                                <a th:href="@{/add-shirt/{id} (id=${shirt.id}) }">
+
+                                    <span th:text="${shirt.name}">-</span>
+                                    <span th:text="${shirt.price}">-</span>
+
+                                </a>
+                            </li>
+                        </ol>
                     </form>
                 </div>
             </div>
