@@ -1,5 +1,6 @@
 package ru.itpark.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -107,10 +108,19 @@ public class ProductController {
         return "entities/mobile";
     }
 
+//    @PreAuthorize("hasAnyAuthority(account)")
     @PostMapping("add-shirt/{id}/remove")
-    public String remove(@PathVariable int id, @AuthenticationPrincipal Account account, @ModelAttribute Shirt shirt) {
+    public String removeShirtById(@PathVariable int id, @AuthenticationPrincipal Account account, @ModelAttribute Shirt shirt) {
         shirtService.deleteById(id);
 
         return "redirect:/add-shirt";
+    }
+
+//    @PreAuthorize("hasAnyAuthority(account)")
+    @PostMapping("add-mobile/{id}/remove")
+    public String removeMobileById(@PathVariable int id, @AuthenticationPrincipal Account account, @ModelAttribute Mobile mobile) {
+        shirtService.deleteById(id);
+
+        return "redirect:/add-mobile";
     }
 }
