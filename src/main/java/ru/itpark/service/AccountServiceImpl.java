@@ -10,6 +10,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ru.itpark.entity.Account;
+import ru.itpark.entity.Mobile;
+import ru.itpark.entity.Shirt;
 import ru.itpark.exception.UsernameAlreadyExistsException;
 import ru.itpark.repository.AccountRepository;
 
@@ -55,22 +57,36 @@ public class AccountServiceImpl implements AccountService {
                 );
     }
 
-    public void createAccount(String username,String email, String password) throws UsernameAlreadyExistsException {
-        if (accountRepository.findByUsername(username).isPresent()) {
+
+    public void save(Account account)
+            throws UsernameAlreadyExistsException {
+        if (accountRepository.findByUsername(account.getUsername()).isPresent()) {
             throw new UsernameAlreadyExistsException("Username already exists / Пользователь с таким именем уже существует");
         }
 
-        Account account = new Account(
-                0,
-                username,
-                email,
-                encoder.encode(password),
-                List.of(new SimpleGrantedAuthority("ROLE_USER")),
-                true,
-                true,
-                true,
-                true
-        );
+        account.setPassword(encoder.encode(account.getPassword()));
         accountRepository.save(account);
     }
 }
+
+//    public void createAccount(String username, String email, String password)
+//            throws UsernameAlreadyExistsException {
+//        if (accountRepository.findByUsername(username).isPresent()) {
+//            throw new UsernameAlreadyExistsException("Username already exists / Пользователь с таким именем уже существует");
+//        }
+//
+//        Account account = new Account(
+//                0,
+//                username,
+//                email,
+//                encoder.encode(password),
+//                List.of(new SimpleGrantedAuthority("ROLE_USER")),
+//                true,
+//                true,
+//                true,
+//                true
+//        );
+//
+//        accountRepository.save(account);
+//    }
+

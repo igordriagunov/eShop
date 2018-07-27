@@ -10,6 +10,9 @@ import ru.itpark.entity.Mobile;
 import ru.itpark.entity.Shirt;
 import ru.itpark.service.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/")
 public class ProductController {
@@ -47,8 +50,8 @@ public class ProductController {
     }
 
     @PostMapping("registration")
-    public String doneRegistration(@RequestParam String username, @RequestParam String email, @RequestParam String password) {
-        accountService.createAccount(username, email, password);
+    public String doneRegistration(@ModelAttribute Account account) {
+        accountService.save(account);
 
         return "redirect:/login";
     }
@@ -111,7 +114,8 @@ public class ProductController {
 //    @PreAuthorize("hasAnyAuthority(account)")
     @PostMapping("add-shirt/{id}/remove")
     public String removeShirtById(@PathVariable int id, @AuthenticationPrincipal Account account, @ModelAttribute Shirt shirt) {
-        shirtService.deleteById(id);
+        Shirt shirtDelete = (Shirt) shirtService.findById(id);
+        shirtService.delete(shirtDelete);
 
         return "redirect:/add-shirt";
     }
@@ -119,7 +123,7 @@ public class ProductController {
 //    @PreAuthorize("hasAnyAuthority(account)")
     @PostMapping("add-mobile/{id}/remove")
     public String removeMobileById(@PathVariable int id, @AuthenticationPrincipal Account account, @ModelAttribute Mobile mobile) {
-        shirtService.deleteById(id);
+        mobileService.deleteById(id);
 
         return "redirect:/add-mobile";
     }

@@ -39,15 +39,15 @@ public class ShopApplication {
                         "qwer",
                         "4000",
                         new Account(
-                                1,
-                                "admin",
-                                "admin@mail.ru",
-                                encoder.encode("admin"),
-                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
-                                true,
-                                true,
-                                true,
-                                true
+//                                1,
+//                                "admin",
+//                                "admin@mail.ru",
+//                                encoder.encode("admin"),
+//                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
+//                                true,
+//                                true,
+//                                true,
+//                                true
                         )
                 )
         );
@@ -65,15 +65,15 @@ public class ShopApplication {
                         "s9s",
                         "3500",
                         new Account(
-                                2,
-                                "user",
-                                "user@mail.ru",
-                                encoder.encode("user"),
-                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
-                                true,
-                                true,
-                                true,
-                                true
+//                                2,
+//                                "user",
+//                                "user@mail.ru",
+//                                encoder.encode("user"),
+//                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
+//                                true,
+//                                true,
+//                                true,
+//                                true
                         )
                 )
         );
@@ -104,15 +104,15 @@ public class ShopApplication {
                         "M / 48-50",
                         "black",
                         new Account(
-                                1,
-                                "admin",
-                                "admin@mail.ru",
-                                encoder.encode("admin"),
-                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
-                                true,
-                                true,
-                                true,
-                                true
+//                                1,
+//                                "admin",
+//                                "admin@mail.ru",
+//                                encoder.encode("admin"),
+//                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
+//                                true,
+//                                true,
+//                                true,
+//                                true
                         )
                 )
         );
@@ -127,15 +127,15 @@ public class ShopApplication {
                         "M / 48-50",
                         "black",
                         new Account(
-                                2,
-                                "user",
-                                "user@mail.ru",
-                                encoder.encode("user"),
-                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
-                                true,
-                                true,
-                                true,
-                                true
+//                                2,
+//                                "user",
+//                                "user@mail.ru",
+//                                encoder.encode("user"),
+//                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
+//                                true,
+//                                true,
+//                                true,
+//                                true
                         )
                 )
         );

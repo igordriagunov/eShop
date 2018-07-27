@@ -21,4 +21,6 @@ public interface ShirtRepository
     List<Shirt> findAllById(Iterable<Integer> iterable);
 
     List<Shirt> findAllByAccount_Id(int accountId);
+
+    List<Shirt> findShirtsById(int id);
 }

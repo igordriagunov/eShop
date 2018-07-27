@@ -36,7 +36,7 @@ public class Shirt {
     @Column(name = "color")
     private String color;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", foreignKey = @ForeignKey(name = "FK_accountId"))
     private Account account;
 

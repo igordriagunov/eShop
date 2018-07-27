@@ -1,6 +1,7 @@
 package ru.itpark.service;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import ru.itpark.entity.Shirt;
 import ru.itpark.repository.ShirtRepository;
@@ -27,19 +28,20 @@ public class ShirtService {
         return shirtRepository.findAll();
     }
 
-    public List<Shirt> findByName(String name){
+    public List<Shirt> findByName(String name) {
         return shirtRepository.findByNameContains(name);
     }
 
-    public List<Shirt> findAllByAccountId(int accountId){
+    public List<Shirt> findAllByAccountId(int accountId) {
         return shirtRepository.findAllByAccount_Id(accountId);
     }
 
-    public Optional<Shirt> findById(int id) {
-        return shirtRepository.findById(id);
+    public List<Shirt> findById(int id) {
+         return shirtRepository.findShirtsById(id);
     }
 
-    public void deleteById(int id) {
-        shirtRepository.deleteById(id);
+    @PreAuthorize("#shirt.account.id == authentication.name or hasRole('ROLE_ADMIN')")
+    public void delete(@P("shirt") Shirt shirt) {
+        shirtRepository.delete(shirt);
     }
 }

@@ -38,4 +38,8 @@ public class MobileService {
     public Optional<Mobile> findById(int id) {
         return mobileRepository.findById(id);
     }
+
+    public void deleteById(int id) {
+        mobileRepository.deleteById(id);
+    }
 }

@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 
 @Entity
@@ -31,6 +32,12 @@ public class Account implements UserDetails {
 
     @Column(name = "password")
     private String password;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.MERGE)
+    private List<Mobile> mobiles;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.MERGE)
+    private List<Shirt> shirts;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private Collection<GrantedAuthority> authorities;
