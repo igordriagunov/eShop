@@ -1,5 +1,6 @@
 package ru.itpark.service;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 
@@ -39,6 +40,7 @@ public class MobileService {
         return mobileRepository.findById(id);
     }
 
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteById(int id) {
         mobileRepository.deleteById(id);
     }

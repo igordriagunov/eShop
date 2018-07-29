@@ -16,6 +16,7 @@ import ru.itpark.exception.UsernameAlreadyExistsException;
 import ru.itpark.repository.AccountRepository;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Primary
@@ -58,35 +59,25 @@ public class AccountServiceImpl implements AccountService {
     }
 
 
-    public void save(Account account)
+    public void createAccount(String username, String email, String password)
             throws UsernameAlreadyExistsException {
-        if (accountRepository.findByUsername(account.getUsername()).isPresent()) {
+        if (accountRepository.findByUsername(username).isPresent()) {
             throw new UsernameAlreadyExistsException("Username already exists / Пользователь с таким именем уже существует");
         }
 
-        account.setPassword(encoder.encode(account.getPassword()));
+        Account account = new Account(
+                0,
+                username,
+                email,
+                encoder.encode(password),
+                List.of(new SimpleGrantedAuthority("ROLE_USER")),
+                true,
+                true,
+                true,
+                true
+        );
+
         accountRepository.save(account);
     }
 }
-
-//    public void createAccount(String username, String email, String password)
-//            throws UsernameAlreadyExistsException {
-//        if (accountRepository.findByUsername(username).isPresent()) {
-//            throw new UsernameAlreadyExistsException("Username already exists / Пользователь с таким именем уже существует");
-//        }
-//
-//        Account account = new Account(
-//                0,
-//                username,
-//                email,
-//                encoder.encode(password),
-//                List.of(new SimpleGrantedAuthority("ROLE_USER")),
-//                true,
-//                true,
-//                true,
-//                true
-//        );
-//
-//        accountRepository.save(account);
-//    }
 

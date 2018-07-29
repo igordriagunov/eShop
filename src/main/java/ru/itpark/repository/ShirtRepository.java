@@ -6,6 +6,7 @@ import ru.itpark.entity.Mobile;
 import ru.itpark.entity.Shirt;
 
 import java.util.List;
+import java.util.Optional;
 
 //import ru.itpark.entity.AbstractProduct;
 //import ru.itpark.entity.Product;
@@ -22,5 +23,10 @@ public interface ShirtRepository
 
     List<Shirt> findAllByAccount_Id(int accountId);
 
-    List<Shirt> findShirtsById(int id);
+    @Override
+    Optional<Shirt> findById(Integer id);
+
+    @Override
+    void deleteById(Integer id);
+
 }

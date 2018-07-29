@@ -9,6 +9,7 @@ import ru.itpark.entity.Product;
 
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface MobileRepository
@@ -21,4 +22,10 @@ public interface MobileRepository
     List<Mobile> findAllById(Iterable<Integer> iterable);
 
     List<Mobile> findAllByAccount_Id(int accountId);
+
+    @Override
+    Optional<Mobile> findById(Integer id);
+
+    @Override
+    void deleteById(Integer id);
 }

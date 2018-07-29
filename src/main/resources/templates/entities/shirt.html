@@ -43,7 +43,7 @@
                     <span class="card-title" th:text="${shirt.get().size}"></span>
                 </div>
                 <form th:if="${@accountService.isAuthenticated()}"
-                        th:action="@{/add-shirt/{id}/remove (id=${shirt.get().id}) }" method="post">
+                        th:action="@{/add-shirt/{shirtId}/remove (shirtId=${shirt.get().id}) }" method="post">
                     <button class="waves-effect black-text text-darken-2 grey lighten-2 btn">Удалить</button>
                 </form>
             </div>

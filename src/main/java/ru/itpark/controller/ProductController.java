@@ -50,8 +50,8 @@ public class ProductController {
     }
 
     @PostMapping("registration")
-    public String doneRegistration(@ModelAttribute Account account) {
-        accountService.save(account);
+    public String doneRegistration(@RequestParam String username, @RequestParam String email, @RequestParam String password) {
+        accountService.createAccount(username, email, password);
 
         return "redirect:/login";
     }
@@ -84,7 +84,7 @@ public class ProductController {
     @GetMapping("add-shirt")
     public String getAddShirtForm(Model model, @AuthenticationPrincipal Account account) {
         model.addAttribute("account", account);
-        model.addAttribute("shirts",shirtService.findAllByAccountId(account.getId()));
+        model.addAttribute("shirts", shirtService.findAllByAccountId(account.getId()));
 
         return "account/add-shirt";
     }
@@ -111,18 +111,17 @@ public class ProductController {
         return "entities/mobile";
     }
 
-//    @PreAuthorize("hasAnyAuthority(account)")
     @PostMapping("add-shirt/{id}/remove")
-    public String removeShirtById(@PathVariable int id, @AuthenticationPrincipal Account account, @ModelAttribute Shirt shirt) {
-        Shirt shirtDelete = (Shirt) shirtService.findById(id);
-        shirtService.delete(shirtDelete);
+    public String removeShirtById(@PathVariable int id, @AuthenticationPrincipal Account account, @ModelAttribute Shirt shirt, Model model) {
+        model.addAttribute("account", account);
+        shirtService.deleteById(id);
 
         return "redirect:/add-shirt";
     }
 
-//    @PreAuthorize("hasAnyAuthority(account)")
     @PostMapping("add-mobile/{id}/remove")
-    public String removeMobileById(@PathVariable int id, @AuthenticationPrincipal Account account, @ModelAttribute Mobile mobile) {
+    public String removeMobileById(@PathVariable int id, @AuthenticationPrincipal Account account, @ModelAttribute Mobile mobile, Model model) {
+        model.addAttribute("account", account);
         mobileService.deleteById(id);
 
         return "redirect:/add-mobile";

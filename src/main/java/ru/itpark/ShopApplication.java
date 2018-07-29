@@ -39,15 +39,15 @@ public class ShopApplication {
                         "qwer",
                         "4000",
                         new Account(
-//                                1,
-//                                "admin",
-//                                "admin@mail.ru",
-//                                encoder.encode("admin"),
-//                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
-//                                true,
-//                                true,
-//                                true,
-//                                true
+                                1,
+                                "admin",
+                                "admin@mail.ru",
+                                encoder.encode("admin"),
+                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
+                                true,
+                                true,
+                                true,
+                                true
                         )
                 )
         );
@@ -65,38 +65,48 @@ public class ShopApplication {
                         "s9s",
                         "3500",
                         new Account(
-//                                2,
-//                                "user",
-//                                "user@mail.ru",
-//                                encoder.encode("user"),
-//                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
-//                                true,
-//                                true,
-//                                true,
-//                                true
+                                2,
+                                "user",
+                                "user@mail.ru",
+                                encoder.encode("user"),
+                                List.of(new SimpleGrantedAuthority("ROLE_USER")),
+                                true,
+                                true,
+                                true,
+                                true
                         )
                 )
         );
 //
-//        mobileService.save(
-//                new Mobile(
-//                        0,
-//                        "iPhone 8",
-//                        "smartphone made in china",
-//                        100,
-//                        44000,
-//                        "5,5",
-//                        "32",
-//                        "a8",
-//                        "2400",
-//                        new Account()
-//
-//                )
-//        );
+        mobileService.save(
+                new Mobile(
+                        0,
+                        "iPhone 8",
+                        "smartphone made in china",
+                        100,
+                        44000,
+                        "5,5",
+                        "32",
+                        "a8",
+                        "2400",
+                        new Account(
+                                1,
+                                "admin",
+                                "admin@mail.ru",
+                                encoder.encode("admin"),
+                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
+                                true,
+                                true,
+                                true,
+                                true
+                        )
+
+                )
+        );
 
         shirtService.save(
                 new Shirt(
-                        1,
+                        0,
                         "Nike sport",
                         "new collection T-shirt",
                         4,
@@ -104,15 +114,15 @@ public class ShopApplication {
                         "M / 48-50",
                         "black",
                         new Account(
-//                                1,
-//                                "admin",
-//                                "admin@mail.ru",
-//                                encoder.encode("admin"),
-//                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
-//                                true,
-//                                true,
-//                                true,
-//                                true
+                                1,
+                                "admin",
+                                "admin@mail.ru",
+                                encoder.encode("admin"),
+                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
+                                true,
+                                true,
+                                true,
+                                true
                         )
                 )
         );
@@ -127,15 +137,15 @@ public class ShopApplication {
                         "M / 48-50",
                         "black",
                         new Account(
-//                                2,
-//                                "user",
-//                                "user@mail.ru",
-//                                encoder.encode("user"),
-//                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
-//                                true,
-//                                true,
-//                                true,
-//                                true
+                                2,
+                                "user",
+                                "user@mail.ru",
+                                encoder.encode("user"),
+                                List.of(new SimpleGrantedAuthority("ROLE_USER")),
+                                true,
+                                true,
+                                true,
+                                true
                         )
                 )
         );
@@ -164,7 +174,7 @@ public class ShopApplication {
                                 "user",
                                 "user@mail.ru",
                                 encoder.encode("user"),
-                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
+                                List.of(new SimpleGrantedAuthority("ROLE_USER")),
                                 true,
                                 true,
                                 true,
