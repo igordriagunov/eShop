@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import ru.itpark.entity.Account;
 import ru.itpark.entity.Mobile;
+import ru.itpark.entity.Order;
 import ru.itpark.entity.Shirt;
 import ru.itpark.exception.UsernameAlreadyExistsException;
 import ru.itpark.repository.AccountRepository;
@@ -59,7 +60,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
 
-    public void createAccount(String username, String email, String password)
+    public void createAccount(String username, String email, String password, List<Order> order)
             throws UsernameAlreadyExistsException {
         if (accountRepository.findByUsername(username).isPresent()) {
             throw new UsernameAlreadyExistsException("Username already exists / Пользователь с таким именем уже существует");
@@ -74,7 +75,8 @@ public class AccountServiceImpl implements AccountService {
                 true,
                 true,
                 true,
-                true
+                true,
+                order
         );
 
         accountRepository.save(account);

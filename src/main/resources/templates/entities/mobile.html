@@ -48,6 +48,11 @@
                       th:action="@{/add-mobile/{id}/remove (id=${mobile.get().id}) }" method="post">
                     <button class="waves-effect black-text text-darken-2 grey lighten-2 btn">Удалить</button>
                 </form>
+                <br>
+                <form th:if="${@accountService.isAuthenticated()}"
+                      th:action="@{/add-order}" method="post">
+                    <button class="waves-effect black-text text-darken-2 grey lighten-2 btn">Добавить</button>
+                </form>
             </div>
         </div>
     </div>

@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.itpark.entity.Account;
 import ru.itpark.entity.Mobile;
+import ru.itpark.entity.Order;
 import ru.itpark.entity.Shirt;
 import ru.itpark.service.*;
 
@@ -50,8 +51,9 @@ public class ProductController {
     }
 
     @PostMapping("registration")
-    public String doneRegistration(@RequestParam String username, @RequestParam String email, @RequestParam String password) {
-        accountService.createAccount(username, email, password);
+    public String doneRegistration(@RequestParam String username, @RequestParam String email, @RequestParam String password,
+                                   @RequestParam List<Order> order) {
+        accountService.createAccount(username, email, password, order);
 
         return "redirect:/login";
     }

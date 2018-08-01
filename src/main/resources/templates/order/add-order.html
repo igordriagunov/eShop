@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- CSS  -->
+    <link rel="stylesheet"
+          th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
+
+    <link rel="stylesheet"
+          data-th-href="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css}">
+    <title>Add order</title>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m7">
+
+            <h3 th:align="center">new order</h3>
+            <a th:href="@{/}" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Главная</a>
+            <br>
+            <div class="card">
+                <div class="card-content">
+                    <form th:if="${@accountService.isAuthenticated()}" th:action="@{/add-order}" method="post">
+
+                        <ol class="collection">
+                            <li class="collection-item" th:each="order : ${orders}">
+                                <a th:href="@{/add-order/{id} (id=${order.id}) }">
+
+                                    <span th:text="${order.id}">-</span>
+                                    <span th:text="${order.date}">-</span>
+                                </a>
+                            </li>
+                        </ol>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
