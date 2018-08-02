@@ -29,7 +29,7 @@ public class Order {
 
     @Column(name = "date")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private LocalDateTime date;
+    private java.sql.Date date;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(name = "order_mobile",

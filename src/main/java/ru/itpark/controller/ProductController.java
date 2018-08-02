@@ -51,9 +51,8 @@ public class ProductController {
     }
 
     @PostMapping("registration")
-    public String doneRegistration(@RequestParam String username, @RequestParam String email, @RequestParam String password,
-                                   @RequestParam List<Order> order) {
-        accountService.createAccount(username, email, password, order);
+    public String doneRegistration(@RequestParam String username, @RequestParam String email, @RequestParam String password) {
+        accountService.createAccount(username, email, password);
 
         return "redirect:/login";
     }

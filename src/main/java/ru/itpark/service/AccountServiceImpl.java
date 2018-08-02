@@ -60,7 +60,7 @@ public class AccountServiceImpl implements AccountService {
     }
 
 
-    public void createAccount(String username, String email, String password, List<Order> order)
+    public void createAccount(String username, String email, String password)
             throws UsernameAlreadyExistsException {
         if (accountRepository.findByUsername(username).isPresent()) {
             throw new UsernameAlreadyExistsException("Username already exists / Пользователь с таким именем уже существует");
@@ -76,7 +76,7 @@ public class AccountServiceImpl implements AccountService {
                 true,
                 true,
                 true,
-                order
+                List.of(new Order())
         );
 
         accountRepository.save(account);

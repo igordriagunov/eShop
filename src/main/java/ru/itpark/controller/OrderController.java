@@ -35,6 +35,6 @@ public class OrderController {
         order.setAccount(account);
         orderService.save(order);
 
-        return "order/add-order";
+        return "redirect:/add-order";
     }
 }

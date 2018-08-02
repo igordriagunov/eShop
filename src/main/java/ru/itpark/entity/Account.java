@@ -41,6 +41,6 @@ public class Account implements UserDetails {
     private boolean isEnabled;
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    private List<Order> order;
+    private List<Order> orders;
 
 }

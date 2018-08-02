@@ -44,7 +44,7 @@ public class ShopApplication {
         mobile.setProcessorModel("qlcm3x");
         mobile.setAccount(
                 new Account(
-                        0,
+                        1,
                         "admin",
                         "admin@mail.ru",
                         encoder.encode("admin"),
@@ -181,21 +181,21 @@ public class ShopApplication {
 //                )
 //        );
 //
-//        accountRepository.saveAll(
-//                List.of(
-//                        new Account(
-//                                0,
-//                                "admin",
-//                                "admin@mail.ru",
-//                                encoder.encode("admin"),
-//                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
-//                                true,
-//                                true,
-//                                true,
-//                                true,
-//                                List.of(new Order())
-//                        )
-//                )
-//        );
+        accountRepository.saveAll(
+                List.of(
+                        new Account(
+                                1,
+                                "admin",
+                                "admin@mail.ru",
+                                encoder.encode("admin"),
+                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
+                                true,
+                                true,
+                                true,
+                                true,
+                                List.of(new Order())
+                        )
+                )
+        );
     }
 }
