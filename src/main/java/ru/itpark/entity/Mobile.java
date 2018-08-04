@@ -48,11 +48,11 @@ public class Mobile {
     @Column(name = "battery_power", nullable = false)
     private String batteryPower;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinTable(name = "order mobile",
-            joinColumns = @JoinColumn(name = "mobile_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id"))
-    private List<Order> orders;
+//    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+//    @JoinTable(name = "order_mobile",
+//            joinColumns = @JoinColumn(name = "mobile_id"),
+//            inverseJoinColumns = @JoinColumn(name = "order_id"))
+//    private List<Order> orders;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "account_id", foreignKey = @ForeignKey(name = "FK_accountId"))

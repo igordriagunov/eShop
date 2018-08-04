@@ -13,9 +13,9 @@ import java.util.List;
 
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Table(name = "accounts")
 public class Account implements UserDetails {
 
@@ -42,5 +42,6 @@ public class Account implements UserDetails {
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private List<Order> orders;
+
 
 }

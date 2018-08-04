@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Calendar;
@@ -29,7 +30,7 @@ public class Order {
 
     @Column(name = "date")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private java.sql.Date date;
+    private Timestamp date;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(name = "order_mobile",

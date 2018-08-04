@@ -9,6 +9,8 @@ import ru.itpark.entity.Order;
 import ru.itpark.service.MobileService;
 import ru.itpark.service.OrderService;
 
+import java.sql.Timestamp;
+
 @Controller
 @RequestMapping("/")
 public class OrderController {
@@ -31,8 +33,10 @@ public class OrderController {
     }
 
     @PostMapping("add-order")
-    public String addOrder(@ModelAttribute Order order, @AuthenticationPrincipal Account account) {
+    public String addOrder(@ModelAttribute Order order, @AuthenticationPrincipal Account account,
+                           @RequestParam Timestamp date) {
         order.setAccount(account);
+        order.setDate(date);
         orderService.save(order);
 
         return "redirect:/add-order";

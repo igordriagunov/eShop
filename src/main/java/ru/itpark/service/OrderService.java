@@ -2,10 +2,13 @@ package ru.itpark.service;
 
 import org.springframework.stereotype.Service;
 import ru.itpark.entity.Account;
+import ru.itpark.entity.Mobile;
 import ru.itpark.entity.Order;
+import ru.itpark.entity.Shirt;
 import ru.itpark.repository.OrderRepository;
 
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -18,17 +21,19 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-//    public void createOrder(Date date, Account account) {
-//
-//        Order order = new Order(
-//                0,
-//                date,
-//                account
-//        );
-//
-//        orderRepository.save(order);
-//
-//    }
+    public void createOrder(Timestamp date) {
+
+        Order order = new Order(
+                0,
+                date,
+                List.of(new Mobile()),
+                List.of(new Shirt()),
+                new Account()
+        );
+
+        orderRepository.saveAndFlush(order);
+
+    }
 
     public void save(Order order) {
         orderRepository.saveAndFlush(order);
