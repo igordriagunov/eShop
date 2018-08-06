@@ -32,7 +32,7 @@ public class ShopApplication {
 
         mobileService.save(
                 new Mobile(
-                        1,
+                        0,
                         "xiaomi",
                         "phone made in china",
                         100,
@@ -55,6 +55,31 @@ public class ShopApplication {
                         )
 
 
+                )
+        );
+
+
+        shirtService.save(
+                new Shirt(
+                        0,
+                        "nike AIR",
+                        "sportwear",
+                        4,
+                        999,
+                        "M /48",
+                        "red",
+                        new Account(
+                                3,
+                                "vova",
+                                "vova@mail.ru",
+                                encoder.encode("vova"),
+                                List.of(new SimpleGrantedAuthority("ROLE_USER")),
+                                true,
+                                true,
+                                true,
+                                true,
+                                List.of(new Order())
+                        )
                 )
         );
 
@@ -163,26 +188,24 @@ public class ShopApplication {
 //        shirtService.save(shirt);
 //
 //
-//        Shirt shirt1 = new Shirt();
-//
-//        shirt1.setName("Abibas");
-//        shirt1.setDescription("new collection T-shirt");
-//        shirt1.setQuantity(55);
-//        shirt1.setPrice(599);
-//        shirt1.setSize("XL / 52-54");
-//        shirt1.setColor("black");
-//        shirt1.setAccount(new Account(
-//                        "vova",
-//                        "vova@mail.ru",
-//                        encoder.encode("vova"),
-//                        List.of(new SimpleGrantedAuthority("ROLE_USER")),
-//                        true,
-//                        true,
-//                        true,
-//                        true,
-//                        List.of(new Order())
-//                )
-//        );
+
+
+        accountRepository.saveAll(
+                List.of(
+                        new Account(
+                                1,
+                                "admin",
+                                "admin@mail.ru",
+                                encoder.encode("admin"),
+                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
+                                true,
+                                true,
+                                true,
+                                true,
+                                List.of(new Order())
+                        )
+                )
+        );
 
 
         accountRepository.saveAll(
@@ -201,24 +224,8 @@ public class ShopApplication {
                         )
                 )
         );
-//
-        accountRepository.saveAll(
-                List.of(
-                        new Account(
-                                1,
-                                "admin",
-                                "admin@mail.ru",
-                                encoder.encode("admin"),
-                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
-                                true,
-                                true,
-                                true,
-                                true,
-                                List.of(new Order())
-                        )
-                )
-        );
-//
+
+
         accountRepository.saveAll(
                 List.of(
                         new Account(

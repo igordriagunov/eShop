@@ -21,6 +21,7 @@
         <div class="col s12 m7">
 
             <h3 th:align="center">yourShop</h3>
+            <!--<h4 th:align="center" th:text="${account.getUsername()}"></h4>-->
 
             <form th:if="${@accountService.isAuthenticated()}" data-th-action="@{/logout}" method="post">
                 <button type="submit" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Выйти</button>
@@ -31,6 +32,8 @@
                class="waves-effect black-text text-darken-2 grey lighten-2 btn">Регистрация</a>
             <a th:href="@{/all-products}" th:if="${@accountService.isAuthenticated()}"
                class="waves-effect black-text text-darken-2 grey lighten-2 btn">Мои товары</a>
+            <a th:href="@{/add-order}" th:if="${@accountService.isAuthenticated()}"
+               class="waves-effect black-text text-darken-2 grey lighten-2 btn">Мои заказы</a>
 
             <div class="card">
 
@@ -45,7 +48,7 @@
 
                     <form data-th-action="@{/}">
                         <label for="name">Enter product name</label>
-                        <input id="name" name="name" type="search" data-th-value="${name}" required>
+                        <input placeholder="abibas orijinal" id="name" name="name" type="search" data-th-value="${name}" required>
                         <button class="waves-effect grey darken-4 btn" type="submit">Найти</button>
                         <br>
                         <br>

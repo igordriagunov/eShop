@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.itpark.entity.Account;
+import ru.itpark.entity.Mobile;
 import ru.itpark.entity.Order;
 import ru.itpark.service.MobileService;
 import ru.itpark.service.OrderService;
@@ -33,10 +34,8 @@ public class OrderController {
     }
 
     @PostMapping("add-order")
-    public String addOrder(@ModelAttribute Order order, @AuthenticationPrincipal Account account,
-                           @RequestParam Timestamp date) {
+    public String addOrder(@ModelAttribute Order order, @AuthenticationPrincipal Account account) {
         order.setAccount(account);
-        order.setDate(date);
         orderService.save(order);
 
         return "redirect:/add-order";

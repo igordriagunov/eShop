@@ -11,9 +11,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
@@ -30,19 +28,19 @@ public class Order {
 
     @Column(name = "date")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Timestamp date;
+    private String date = new java.util.Date().toString();
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE  )
     @JoinTable(name = "order_mobile",
-            joinColumns = @JoinColumn(name = "order_id"),
+            joinColumns = @JoinColumn(name = "order_id",foreignKey = @ForeignKey(name = "FK_orderId_mobileId")),
             inverseJoinColumns = @JoinColumn(name = "mobile_id"))
-    private List<Mobile> mobiles;
+    private Mobile mobile;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(name = "order_shirt",
-            joinColumns = @JoinColumn(name = "order_id"),
+            joinColumns = @JoinColumn(name = "order_id",foreignKey = @ForeignKey(name = "FK_orderId_shirtId")),
             inverseJoinColumns = @JoinColumn(name = "shirt_id"))
-    private List<Shirt> shirts;
+    private Shirt shirt;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "account_id", foreignKey = @ForeignKey(name = "FK_accountId"))

@@ -11,6 +11,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class OrderService {
@@ -21,13 +22,13 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public void createOrder(Timestamp date) {
+    public void createOrder(String date) {
 
         Order order = new Order(
                 0,
                 date,
-                List.of(new Mobile()),
-                List.of(new Shirt()),
+                new Mobile(),
+                new Shirt(),
                 new Account()
         );
 

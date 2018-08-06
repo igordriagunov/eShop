@@ -40,7 +40,7 @@ public class Account implements UserDetails {
     private boolean isCredentialsNonExpired;
     private boolean isEnabled;
 
-    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY, cascade = CascadeType.MERGE, orphanRemoval = true)
     private List<Order> orders;
 
 
