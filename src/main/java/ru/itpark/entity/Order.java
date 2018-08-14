@@ -30,16 +30,12 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String date = new java.util.Date().toString();
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE  )
-    @JoinTable(name = "order_mobile",
-            joinColumns = @JoinColumn(name = "order_id",foreignKey = @ForeignKey(name = "FK_orderId_mobileId")),
-            inverseJoinColumns = @JoinColumn(name = "mobile_id"))
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "mobile_id", foreignKey = @ForeignKey(name = "FK_orderId_mobileId"))
     private Mobile mobile;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinTable(name = "order_shirt",
-            joinColumns = @JoinColumn(name = "order_id",foreignKey = @ForeignKey(name = "FK_orderId_shirtId")),
-            inverseJoinColumns = @JoinColumn(name = "shirt_id"))
+    @JoinColumn(name = "shirt_id", foreignKey = @ForeignKey(name = "FK_orderId_shirtId"))
     private Shirt shirt;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)

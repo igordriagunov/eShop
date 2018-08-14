@@ -13,28 +13,25 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "mobiles")
-public class Mobile {
+public class Mobile extends Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @Column(name = "description", nullable = false)
-    private String description;
-
-    @Column(name = "quantity", nullable = false)
-    private int quantity;
-
-    @Column(name = "price", nullable = false)
-    private int price;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
+//
+//    @Column(name = "name", nullable = false)
+//    private String name;
+//
+//    @Column(name = "description", nullable = false)
+//    private String description;
+//
+//    @Column(name = "quantity", nullable = false)
+//    private int quantity;
+//
+//    @Column(name = "price", nullable = false)
+//    private int price;
 
     @Column(name = "diagonal", nullable = false)
     private String diagonal;
@@ -54,8 +51,47 @@ public class Mobile {
 //            inverseJoinColumns = @JoinColumn(name = "order_id"))
 //    private List<Order> orders;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "account_id", foreignKey = @ForeignKey(name = "FK_accountId"))
-    private Account account;
 
+    public Mobile() {
+    }
+
+    public Mobile(String name, String description, int quantity, int price, String diagonal, String memoryGb, String processorModel, String batteryPower, Account account) {
+        super(name, description, quantity, price, account);
+        this.diagonal = diagonal;
+        this.memoryGb = memoryGb;
+        this.processorModel = processorModel;
+        this.batteryPower = batteryPower;
+    }
+
+    public String getDiagonal() {
+        return diagonal;
+    }
+
+    public void setDiagonal(String diagonal) {
+        this.diagonal = diagonal;
+    }
+
+    public String getMemoryGb() {
+        return memoryGb;
+    }
+
+    public void setMemoryGb(String memoryGb) {
+        this.memoryGb = memoryGb;
+    }
+
+    public String getProcessorModel() {
+        return processorModel;
+    }
+
+    public void setProcessorModel(String processorModel) {
+        this.processorModel = processorModel;
+    }
+
+    public String getBatteryPower() {
+        return batteryPower;
+    }
+
+    public void setBatteryPower(String batteryPower) {
+        this.batteryPower = batteryPower;
+    }
 }

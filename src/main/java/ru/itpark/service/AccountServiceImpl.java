@@ -75,8 +75,7 @@ public class AccountServiceImpl implements AccountService {
                 true,
                 true,
                 true,
-                true,
-                List.of(new Order())
+                true
         );
 
         accountRepository.save(account);

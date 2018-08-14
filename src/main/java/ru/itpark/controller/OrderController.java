@@ -40,4 +40,12 @@ public class OrderController {
 
         return "redirect:/add-order";
     }
+
+    @GetMapping("add-order/{id}")
+    public String getOrderById(@PathVariable int id, Model model) {
+        model.addAttribute("order", orderService.findById(id));
+        model.addAttribute("mobile", mobileService.findById(id));
+
+        return "order/order";
+    }
 }

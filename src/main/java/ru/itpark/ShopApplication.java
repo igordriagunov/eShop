@@ -5,12 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.itpark.entity.Account;
-import ru.itpark.entity.Mobile;
-import ru.itpark.entity.Order;
-import ru.itpark.entity.Shirt;
+import ru.itpark.entity.*;
 import ru.itpark.repository.AccountRepository;
 import ru.itpark.service.MobileService;
+import ru.itpark.service.ProductService;
 import ru.itpark.service.ShirtService;
 
 import java.util.ArrayList;
@@ -28,74 +26,99 @@ public class ShopApplication {
         PasswordEncoder encoder = context.getBean(PasswordEncoder.class);
         MobileService mobileService = context.getBean(MobileService.class);
         ShirtService shirtService = context.getBean(ShirtService.class);
+        ProductService productService = context.getBean(ProductService.class);
 
 
-        mobileService.save(
-                new Mobile(
-                        0,
-                        "xiaomi",
-                        "phone made in china",
-                        100,
-                        12500,
-                        "5,5",
-                        "8 Gb",
-                        "qlcm3x",
-                        "4000",
-                        new Account(
-                                1,
-                                "admin",
-                                "admin@mail.ru",
-                                encoder.encode("admin"),
-                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
-                                true,
-                                true,
-                                true,
-                                true,
-                                List.of(new Order())
-                        )
+//        mobileService.save(
+//                new Mobile(
+//                        0,
+//                        "xiaomi",
+//                        "phone made in china",
+//                        100,
+//                        12500,
+//                        "5,5",
+//                        "8 Gb",
+//                        "qlcm3x",
+//                        "4000",
+//                        new Account(
+//                                1,
+//                                "admin",
+//                                "admin@mail.ru",
+//                                encoder.encode("admin"),
+//                                List.of(new SimpleGrantedAuthority("ROLE_ADMIN")),
+//                                true,
+//                                true,
+//                                true,
+//                                true
+//                                List.of(new Order())
+//                        )
 
 
+//                )
+//        );
+
+
+//        shirtService.save(
+//                new Shirt(
+//                        0,
+//                        "nike AIR",
+//                        "sportwear",
+//                        4,
+//                        999,
+//                        "M /48",
+//                        "red",
+//                        new Account(
+//                                3,
+//                                "vova",
+//                                "vova@mail.ru",
+//                                encoder.encode("vova"),
+//                                List.of(new SimpleGrantedAuthority("ROLE_USER")),
+//                                true,
+//                                true,
+//                                true,
+//                                true
+////                                List.of(new Order())
+//                        )
+//                )
+//        );
+
+
+        Product mobile = new Mobile(
+                "xiaomi 5x",
+                "china smartphone",
+                100,
+                15900,
+                "5.7",
+                "16 Gb",
+                "3900",
+                "qlcm5x",
+                new Account(
+                        2,
+                        "user",
+                        "user@mail.ru",
+                        encoder.encode("user"),
+                        List.of(new SimpleGrantedAuthority("ROLE_USER")),
+                        true,
+                        true,
+                        true,
+                        true
+//                                List.of(new Order())
                 )
         );
 
+        productService.saveProduct(mobile);
 
-        shirtService.save(
-                new Shirt(
-                        0,
-                        "nike AIR",
-                        "sportwear",
-                        4,
-                        999,
-                        "M /48",
-                        "red",
-                        new Account(
-                                3,
-                                "vova",
-                                "vova@mail.ru",
-                                encoder.encode("vova"),
-                                List.of(new SimpleGrantedAuthority("ROLE_USER")),
-                                true,
-                                true,
-                                true,
-                                true,
-                                List.of(new Order())
-                        )
-                )
-        );
-
-
-//        Mobile mobile = new Mobile();
-//
 //        mobile.setName("xiaomi");
 //        mobile.setDescription("phone made in china");
 //        mobile.setQuantity(100);
 //        mobile.setPrice(12500);
-//        mobile.setDiagonal("5.5");
-//        mobile.setMemoryGb("8 Gb");
-//        mobile.setBatteryPower("4000");
-//        mobile.setProcessorModel("qlcm3x");
+//        ((Mobile) mobile).setDiagonal("5.5");
+//        ((Mobile) mobile).setMemoryGb("8 Gb");
+//        ((Mobile) mobile).setBatteryPower("4000");
+//        ((Mobile) mobile).setProcessorModel("qlcm3x");
 //        mobile.setAccount(
 //                new Account(
+//                        1,
 //                        "admin",
 //                        "admin@mail.ru",
 //                        encoder.encode("admin"),
@@ -103,13 +126,12 @@ public class ShopApplication {
 //                        true,
 //                        true,
 //                        true,
-//                        true,
-//                        List.of(new Order())
+//                        true
 //                )
 //        );
-//
-//        mobileService.save(mobile);
-//
+
+//        productService.save(mobile);
+
 //
 //        Mobile mobile1 = new Mobile();
 //
@@ -193,7 +215,7 @@ public class ShopApplication {
         accountRepository.saveAll(
                 List.of(
                         new Account(
-                                1,
+                                0,
                                 "admin",
                                 "admin@mail.ru",
                                 encoder.encode("admin"),
@@ -201,8 +223,8 @@ public class ShopApplication {
                                 true,
                                 true,
                                 true,
-                                true,
-                                List.of(new Order())
+                                true
+//                                List.of(new Order())
                         )
                 )
         );
@@ -211,7 +233,7 @@ public class ShopApplication {
         accountRepository.saveAll(
                 List.of(
                         new Account(
-                                2,
+                                0,
                                 "user",
                                 "user@mail.ru",
                                 encoder.encode("user"),
@@ -219,8 +241,8 @@ public class ShopApplication {
                                 true,
                                 true,
                                 true,
-                                true,
-                                List.of(new Order())
+                                true
+//                                List.of(new Order())
                         )
                 )
         );
@@ -229,7 +251,7 @@ public class ShopApplication {
         accountRepository.saveAll(
                 List.of(
                         new Account(
-                                3,
+                                0,
                                 "vova",
                                 "vova@mail.ru",
                                 encoder.encode("vova"),
@@ -237,8 +259,8 @@ public class ShopApplication {
                                 true,
                                 true,
                                 true,
-                                true,
-                                List.of(new Order())
+                                true
+//                                List.of(new Order())
                         )
                 )
         );

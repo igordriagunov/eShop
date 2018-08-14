@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- CSS  -->
+    <link rel="stylesheet"
+          th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
+
+    <link rel="stylesheet"
+          data-th-href="@{https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css}">
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col s12 m7">
+
+            <h3 th:align="center">order details</h3>
+            <!--th:text="${order.get().mobile.getName()}"-->
+            <form th:if="${@accountService.isAuthenticated()}" data-th-action="@{/logout}" method="post">
+                <button type="submit" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Выйти</button>
+            </form>
+            <a th:href="@{/login}" th:if="${!@accountService.isAuthenticated()}"
+               class="waves-effect black-text text-darken-2 grey lighten-2 btn">Войти</a>
+            <a th:href="@{/registration}" th:if="${!@accountService.isAuthenticated()}"
+               class="waves-effect black-text text-darken-2 grey lighten-2 btn">Регистрация</a>
+            <a th:href="@{/all-products}" th:if="${@accountService.isAuthenticated()}"
+               class="waves-effect black-text text-darken-2 grey lighten-2 btn">Мои товары</a>
+
+            <div class="card">
+                <div class="card-content">
+
+
+
+                    <span class="card-title" th:text="${order.get().mobile.name}"></span>
+                    <!--<span class="card-title" th:text="${order.get().getShirt().getPrice()}"></span>-->
+                    <!--<span class="card-title" th:text="${mobile.get().quantity}"></span>-->
+                    <!--<span class="card-title" th:text="${mobile.get().price}"></span>-->
+                    <!--<span class="card-title" th:text="${mobile.get().processorModel}"></span>-->
+                    <!--<span class="card-title" th:text="${mobile.get().batteryPower}"></span>-->
+                    <!--<span class="card-title" th:text="${mobile.get().diagonal}"></span>-->
+                    <!--<span class="card-title" th:text="${mobile.get().memoryGb}"></span>-->
+                </div>
+                <!--<form th:if="${@accountService.isAuthenticated() }"-->
+                      <!--th:action="@{/add-mobile/{id}/remove (id=${mobile.get().id}) }" method="post">-->
+                    <!--<button class="waves-effect black-text text-darken-2 grey lighten-2 btn">Удалить</button>-->
+                <!--</form>-->
+                <br>
+                <!--<form th:if="${@accountService.isAuthenticated()}"-->
+                      <!--th:action="@{/add-order}" method="post">-->
+                    <!--<button class="waves-effect black-text text-darken-2 grey lighten-2 btn">Добавить</button>-->
+                <!--</form>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<!--<span class="card-title" th:text="${shirt.get().name}"></span>-->
+<!--<span class="card-title" th:text="${shirt.get().description}"></span>-->
+<!--<span class="card-title" th:text="${shirt.get().quantity}"></span>-->
+<!--<span class="card-title" th:text="${shirt.get().price}"></span>-->
+<!--<span class="card-title" th:text="${shirt.get().color}"></span>-->
+<!--<span class="card-title" th:text="${shirt.get().size}"></span>-->
