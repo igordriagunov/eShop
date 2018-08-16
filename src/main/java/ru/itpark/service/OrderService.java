@@ -52,4 +52,8 @@ public class OrderService {
     public Optional<Order> findById(int id) {
         return orderRepository.findById(id);
     }
+
+    public void deleteById(int id) {
+        orderRepository.deleteById(id);
+    }
 }

@@ -78,23 +78,23 @@
 
                         <!--</table>-->
 
+                        <!--<ul class="collection">-->
+                            <!--<li class="collection-item" th:each="mobile : ${mobiles}">-->
+                                <!--<a th:href="@{/add-mobile/{id} (id=${mobile.id}) }">-->
+
+                                    <!--<span th:text="${mobile.name}">-</span>-->
+                                    <!--<span th:text="${mobile.price}">-</span>-->
+
+                                <!--</a>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+
                         <ul class="collection">
-                            <li class="collection-item" th:each="mobile : ${mobiles}">
-                                <a th:href="@{/add-mobile/{id} (id=${mobile.id}) }">
+                            <li class="collection-item" th:each="product : ${products}">
+                                <a th:href="@{/add-product/{id} (id=${product.id}) }">
 
-                                    <span th:text="${mobile.name}">-</span>
-                                    <span th:text="${mobile.price}">-</span>
-
-                                </a>
-                            </li>
-                        </ul>
-
-                        <ul class="collection">
-                            <li class="collection-item" th:each="shirt : ${shirts}">
-                                <a th:href="@{/add-shirt/{id} (id=${shirt.id}) }">
-
-                                    <span th:text="${shirt.name}">-</span>
-                                    <span th:text="${shirt.price}" th:align="right">-</span>
+                                    <span th:text="${product.name}">-</span>
+                                    <span th:text="${product.price}" th:align="right">-</span>
 
                                 </a>
                             </li>

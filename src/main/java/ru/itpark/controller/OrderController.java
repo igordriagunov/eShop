@@ -5,12 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.itpark.entity.Account;
-import ru.itpark.entity.Mobile;
 import ru.itpark.entity.Order;
+import ru.itpark.entity.Product;
 import ru.itpark.service.MobileService;
 import ru.itpark.service.OrderService;
-
-import java.sql.Timestamp;
+import ru.itpark.service.ProductService;
 
 @Controller
 @RequestMapping("/")
@@ -18,10 +17,12 @@ public class OrderController {
 
     private final OrderService orderService;
     private final MobileService mobileService;
+    private final ProductService productService;
 
-    public OrderController(OrderService orderService, MobileService mobileService) {
+    public OrderController(OrderService orderService, MobileService mobileService, ProductService productService) {
         this.orderService = orderService;
         this.mobileService = mobileService;
+        this.productService = productService;
     }
 
 
@@ -43,9 +44,17 @@ public class OrderController {
 
     @GetMapping("add-order/{id}")
     public String getOrderById(@PathVariable int id, Model model) {
-        model.addAttribute("order", orderService.findById(id));
-        model.addAttribute("mobile", mobileService.findById(id));
+        model.addAttribute("product", productService.findById(id));
 
         return "order/order";
+    }
+
+    @PostMapping("add-order/{id}/remove")
+    public String deleteOrderById(@PathVariable int id, @ModelAttribute Order order,
+                                  @AuthenticationPrincipal Account account, Model model) {
+        model.addAttribute("account", account);
+        orderService.deleteById(id);
+
+        return "redirect:/add-order";
     }
 }

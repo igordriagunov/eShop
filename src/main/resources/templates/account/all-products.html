@@ -24,11 +24,9 @@
 
             <a th:href="@{/}" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Главная</a>
             <br>
-            <a th:href="@{/add-mobile}" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Добавить
-                "Мобильный телефон"</a>
+            <a th:href="@{/add-mobile}" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Добавить мобильный телефон</a>
             <br>
-            <a th:href="@{/add-shirt}" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Добавить
-                "Футболку"</a>
+            <a th:href="@{/add-shirt}" class="waves-effect black-text text-darken-2 grey lighten-2 btn">Добавить футболку</a>
 
             <div class="card">
                 <div class="card-action">
@@ -44,25 +42,25 @@
                             </tr>
                             </thead>
 
-                            <tbody th:each="mobile : ${mobiles}">
+                            <tbody th:each="product : ${products}">
                             <!--<tr onclick="window.location.href='@{all-products/{id}(id=${mobile.id})}'; return false">-->
                             <tr>
-                                <td th:text="${mobile.name}"></td>
-                                <td th:text="${mobile.description}"></td>
-                                <td th:text="${mobile.price}"></td>
-                                <td th:text="${mobile.quantity}"></td>
+                                <td th:text="${product.name}"></td>
+                                <td th:text="${product.description}"></td>
+                                <td th:text="${product.price}"></td>
+                                <td th:text="${product.quantity}"></td>
                             </tr>
                             </tbody>
 
-                            <tbody th:each="shirt : ${shirts}">
-                            <!--<tr onclick="window.location.href='@{all-products/{id}(id=${shirt.id})}'; return false">-->
-                            <tr>
-                                <td th:text="${shirt.name}"></td>
-                                <td th:text="${shirt.description}"></td>
-                                <td th:text="${shirt.price}"></td>
-                                <td th:text="${shirt.quantity}"></td>
-                            </tr>
-                            </tbody>
+                            <!--<tbody th:each="shirt : ${shirts}">-->
+                            <!--&lt;!&ndash;<tr onclick="window.location.href='@{all-products/{id}(id=${shirt.id})}'; return false">&ndash;&gt;-->
+                            <!--<tr>-->
+                                <!--<td th:text="${shirt.name}"></td>-->
+                                <!--<td th:text="${shirt.description}"></td>-->
+                                <!--<td th:text="${shirt.price}"></td>-->
+                                <!--<td th:text="${shirt.quantity}"></td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
 
                         </table>
 

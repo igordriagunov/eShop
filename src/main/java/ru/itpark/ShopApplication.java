@@ -11,7 +11,6 @@ import ru.itpark.service.MobileService;
 import ru.itpark.service.ProductService;
 import ru.itpark.service.ShirtService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -83,30 +82,79 @@ public class ShopApplication {
 //        );
 
 
-        Product mobile = new Mobile(
-                "xiaomi 5x",
-                "china smartphone",
-                100,
-                15900,
-                "5.7",
-                "16 Gb",
-                "3900",
-                "qlcm5x",
-                new Account(
-                        2,
-                        "user",
-                        "user@mail.ru",
-                        encoder.encode("user"),
-                        List.of(new SimpleGrantedAuthority("ROLE_USER")),
-                        true,
-                        true,
-                        true,
-                        true
-//                                List.of(new Order())
-                )
-        );
+//        Product mobile = new Mobile(
+//                "xiaomi 5x",
+//                "china smartphone",
+//                100,
+//                15900,
+//                "5.7",
+//                "16 Gb",
+//                "3900",
+//                "qlcm5x",
+//                new Account(
+//                        2,
+//                        "user",
+//                        "user@mail.ru",
+//                        encoder.encode("user"),
+//                        List.of(new SimpleGrantedAuthority("ROLE_USER")),
+//                        true,
+//                        true,
+//                        true,
+//                        true
+////                                List.of(new Order())
+//                )
+//        );
 
-        productService.saveProduct(mobile);
+//        productService.saveProduct(mobile);
+
+//        productService.saveMobile(
+//                new Mobile(
+//                        0,
+//                        "xiaomi 5x",
+//                        "china smartphone",
+//                        100,
+//                        15900,
+//                        "5.7",
+//                        "16 Gb",
+//                        "3900",
+//                        "qlcm5x",
+//                        new Account(
+//                                2,
+//                                "user",
+//                                "user@mail.ru",
+//                                encoder.encode("user"),
+//                                List.of(new SimpleGrantedAuthority("ROLE_USER")),
+//                                true,
+//                                true,
+//                                true,
+//                                true
+////                                List.of(new Order())
+//                        ))
+//        );
+//
+//        productService.saveShirt(
+//                new Shirt(
+//                        0,
+//                        "nike RUN",
+//                        "sportwear",
+//                        10,
+//                        3000,
+//                        "M / 48",
+//                        "red",
+//                        new Account(
+//                                3,
+//                                "vova",
+//                                "vova@mail.ru",
+//                                encoder.encode("vova"),
+//                                List.of(new SimpleGrantedAuthority("ROLE_USER")),
+//                                true,
+//                                true,
+//                                true,
+//                                true
+////                                List.of(new Order())
+//                        )
+//                )
+//        );
 
 //        mobile.setName("xiaomi");
 //        mobile.setDescription("phone made in china");
@@ -215,7 +263,7 @@ public class ShopApplication {
         accountRepository.saveAll(
                 List.of(
                         new Account(
-                                0,
+                                1,
                                 "admin",
                                 "admin@mail.ru",
                                 encoder.encode("admin"),
@@ -228,41 +276,41 @@ public class ShopApplication {
                         )
                 )
         );
-
-
-        accountRepository.saveAll(
-                List.of(
-                        new Account(
-                                0,
-                                "user",
-                                "user@mail.ru",
-                                encoder.encode("user"),
-                                List.of(new SimpleGrantedAuthority("ROLE_USER")),
-                                true,
-                                true,
-                                true,
-                                true
-//                                List.of(new Order())
-                        )
-                )
-        );
-
-
-        accountRepository.saveAll(
-                List.of(
-                        new Account(
-                                0,
-                                "vova",
-                                "vova@mail.ru",
-                                encoder.encode("vova"),
-                                List.of(new SimpleGrantedAuthority("ROLE_USER")),
-                                true,
-                                true,
-                                true,
-                                true
-//                                List.of(new Order())
-                        )
-                )
-        );
+//
+//
+//        accountRepository.saveAll(
+//                List.of(
+//                        new Account(
+//                                2,
+//                                "user",
+//                                "user@mail.ru",
+//                                encoder.encode("user"),
+//                                List.of(new SimpleGrantedAuthority("ROLE_USER")),
+//                                true,
+//                                true,
+//                                true,
+//                                true
+////                                List.of(new Order())
+//                        )
+//                )
+//        );
+//
+//
+//        accountRepository.saveAll(
+//                List.of(
+//                        new Account(
+//                                3,
+//                                "vova",
+//                                "vova@mail.ru",
+//                                encoder.encode("vova"),
+//                                List.of(new SimpleGrantedAuthority("ROLE_USER")),
+//                                true,
+//                                true,
+//                                true,
+//                                true
+////                                List.of(new Order())
+//                        )
+//                )
+//        );
     }
 }

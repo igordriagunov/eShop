@@ -33,16 +33,16 @@ public class Mobile extends Product {
 //    @Column(name = "price", nullable = false)
 //    private int price;
 
-    @Column(name = "diagonal", nullable = false)
+    @Column(name = "diagonal")
     private String diagonal;
 
-    @Column(name = "memory_gb", nullable = false)
+    @Column(name = "memory_gb")
     private String memoryGb;
 
-    @Column(name = "processor_model", nullable = false)
+    @Column(name = "processor_model")
     private String processorModel;
 
-    @Column(name = "battery_power", nullable = false)
+    @Column(name = "battery_power")
     private String batteryPower;
 
 //    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
@@ -55,8 +55,8 @@ public class Mobile extends Product {
     public Mobile() {
     }
 
-    public Mobile(String name, String description, int quantity, int price, String diagonal, String memoryGb, String processorModel, String batteryPower, Account account) {
-        super(name, description, quantity, price, account);
+    public Mobile(int id, String name, String description, int quantity, int price, String diagonal, String memoryGb, String processorModel, String batteryPower, Account account) {
+        super(id, name, description, quantity, price, account);
         this.diagonal = diagonal;
         this.memoryGb = memoryGb;
         this.processorModel = processorModel;

@@ -41,7 +41,8 @@ public abstract class ProductDetail {
     public ProductDetail() {
     }
 
-    public ProductDetail(String name, String description, int quantity, int price, Account account) {
+    public ProductDetail(int id, String name, String description, int quantity, int price, Account account) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.quantity = quantity;

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import ru.itpark.entity.Account;
 import ru.itpark.entity.Mobile;
 import ru.itpark.entity.Product;
+import ru.itpark.entity.Shirt;
 import ru.itpark.repository.MobileRepository;
 import ru.itpark.repository.ProductRepository;
 
@@ -21,27 +22,34 @@ public class ProductService {
     }
 
 
-
-public void saveProduct(Product mobile) {
-    productRepository.saveAndFlush(mobile);
-}
-    public Product save(String name, String description, int quantity, int price, String diagonal,
-                     String memoryGb, String processorModel, String batteryPower) {
-
-        Product mobile = new Mobile(
-                name,
-                description,
-                quantity,
-                price,
-                diagonal,
-                memoryGb,
-                processorModel,
-                batteryPower,
-                new Account()
-        );
-
-        return productRepository.saveAndFlush(mobile);
+    public void saveMobile(Mobile mobile) {
+        productRepository.saveAndFlush(mobile);
     }
+
+
+    public void saveShirt(Shirt shirt) {
+        productRepository.saveAndFlush(shirt);
+    }
+//    public void saveShirt(Product shirt) {
+//        productRepository.saveAndFlush(shirt);
+//    }
+//    public Product save(String name, String description, int quantity, int price, String diagonal,
+//                        String memoryGb, String processorModel, String batteryPower) {
+//
+//        Product mobile = new Mobile(
+//                name,
+//                description,
+//                quantity,
+//                price,
+//                diagonal,
+//                memoryGb,
+//                processorModel,
+//                batteryPower,
+//                new Account()
+//        );
+//
+//        return productRepository.saveAndFlush(mobile);
+//    }
 
     public List<Product> findAll() {
         return productRepository.findAll();
