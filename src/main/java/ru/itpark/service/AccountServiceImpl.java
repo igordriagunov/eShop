@@ -9,10 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import ru.itpark.entity.Account;
-import ru.itpark.entity.Mobile;
-import ru.itpark.entity.Order;
-import ru.itpark.entity.Shirt;
+import ru.itpark.entity.*;
 import ru.itpark.exception.UsernameAlreadyExistsException;
 import ru.itpark.repository.AccountRepository;
 

@@ -3,24 +3,26 @@ package ru.itpark.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @MappedSuperclass
 public abstract class ProductDetail {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     private String name;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "quantity", nullable = false)
+    @Column(name = "quantity")
     private int quantity;
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "price")
     private int price;
 
 
@@ -29,9 +31,10 @@ public abstract class ProductDetail {
 //    @OnDelete(action = OnDeleteAction.CASCADE)
 //    private Account account;
 
-//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL,optional = false)
+    //    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL,optional = false)
 //    @JoinColumn(name = "account_accountId")
 //    private Account account;
+
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "account_id", foreignKey = @ForeignKey(name = "FK_accountId"))
@@ -41,7 +44,8 @@ public abstract class ProductDetail {
     public ProductDetail() {
     }
 
-    public ProductDetail(String name, String description, int quantity, int price, Account account) {
+    public ProductDetail(int id, String name, String description, int quantity, int price, Account account) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.quantity = quantity;
@@ -96,4 +100,5 @@ public abstract class ProductDetail {
     public void setAccount(Account account) {
         this.account = account;
     }
+
 }

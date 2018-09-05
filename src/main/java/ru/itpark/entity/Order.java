@@ -30,15 +30,20 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String date = new java.util.Date().toString();
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "mobile_id", foreignKey = @ForeignKey(name = "FK_orderId_mobileId"))
-    private Mobile mobile;
+//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+//    @JoinColumn(name = "mobile_id", foreignKey = @ForeignKey(name = "FK_orderId_mobileId"))
+//    private Mobile mobile;
+//
+//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+//    @JoinColumn(name = "shirt_id", foreignKey = @ForeignKey(name = "FK_orderId_shirtId"))
+//    private Shirt shirt;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "shirt_id", foreignKey = @ForeignKey(name = "FK_orderId_shirtId"))
-    private Shirt shirt;
+    @JoinColumn(name = "product_id", foreignKey = @ForeignKey(name = "FK_orderId"))
+    private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "account_id", foreignKey = @ForeignKey(name = "FK_accountId"))
     private Account account;
+
 }

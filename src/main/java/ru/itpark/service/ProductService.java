@@ -21,14 +21,15 @@ public class ProductService {
     }
 
 
+    public void saveProduct(Product product) {
+        productRepository.saveAndFlush(product);
+    }
 
-public void saveProduct(Product mobile) {
-    productRepository.saveAndFlush(mobile);
-}
-    public Product save(String name, String description, int quantity, int price, String diagonal,
-                     String memoryGb, String processorModel, String batteryPower) {
+    public Product save(int id, String name, String description, int quantity, int price, String diagonal,
+                        String memoryGb, String processorModel, String batteryPower) {
 
         Product mobile = new Mobile(
+                id,
                 name,
                 description,
                 quantity,
@@ -58,6 +59,7 @@ public void saveProduct(Product mobile) {
     public Optional<Product> findById(int id) {
         return productRepository.findById(id);
     }
+
 
     //    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void deleteById(int id) {

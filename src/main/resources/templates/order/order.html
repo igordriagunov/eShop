@@ -29,32 +29,24 @@
                class="waves-effect black-text text-darken-2 grey lighten-2 btn">Войти</a>
             <a th:href="@{/registration}" th:if="${!@accountService.isAuthenticated()}"
                class="waves-effect black-text text-darken-2 grey lighten-2 btn">Регистрация</a>
-            <a th:href="@{/all-products}" th:if="${@accountService.isAuthenticated()}"
-               class="waves-effect black-text text-darken-2 grey lighten-2 btn">Мои товары</a>
+            <a th:href="@{/add-order}" th:if="${@accountService.isAuthenticated()}"
+               class="waves-effect black-text text-darken-2 grey lighten-2 btn">Мои заказы</a>
 
             <div class="card">
                 <div class="card-content">
 
 
-
-                    <span class="card-title" th:text="${order.get().mobile.name}"></span>
-                    <!--<span class="card-title" th:text="${order.get().getShirt().getPrice()}"></span>-->
-                    <!--<span class="card-title" th:text="${mobile.get().quantity}"></span>-->
-                    <!--<span class="card-title" th:text="${mobile.get().price}"></span>-->
-                    <!--<span class="card-title" th:text="${mobile.get().processorModel}"></span>-->
-                    <!--<span class="card-title" th:text="${mobile.get().batteryPower}"></span>-->
-                    <!--<span class="card-title" th:text="${mobile.get().diagonal}"></span>-->
-                    <!--<span class="card-title" th:text="${mobile.get().memoryGb}"></span>-->
+                    <span class="card-title" th:text="${product.get().getName()}"></span>
+                    <span class="card-title" th:text="${product.get().getPrice()}"></span>
+                    <span class="card-title" th:text="${product.get().getDescription()}"></span>
+                    <span class="card-title" th:text="${product.get().getQuantity()}"></span>
+                    <span class="card-title" th:text="${product.get().getAccount().getUsername()}"></span>
                 </div>
-                <!--<form th:if="${@accountService.isAuthenticated() }"-->
-                      <!--th:action="@{/add-mobile/{id}/remove (id=${mobile.get().id}) }" method="post">-->
-                    <!--<button class="waves-effect black-text text-darken-2 grey lighten-2 btn">Удалить</button>-->
-                <!--</form>-->
-                <br>
-                <!--<form th:if="${@accountService.isAuthenticated()}"-->
-                      <!--th:action="@{/add-order}" method="post">-->
-                    <!--<button class="waves-effect black-text text-darken-2 grey lighten-2 btn">Добавить</button>-->
-                <!--</form>-->
+
+                <form th:if="${@accountService.isAuthenticated() }"
+                      th:action="@{/add-order/{id}/remove (id=${product.get().id}) }" method="post">
+                    <button class="waves-effect black-text text-darken-2 grey lighten-2 btn">Удалить</button>
+                </form>
             </div>
         </div>
     </div>
@@ -62,9 +54,3 @@
 
 </body>
 </html>
-<!--<span class="card-title" th:text="${shirt.get().name}"></span>-->
-<!--<span class="card-title" th:text="${shirt.get().description}"></span>-->
-<!--<span class="card-title" th:text="${shirt.get().quantity}"></span>-->
-<!--<span class="card-title" th:text="${shirt.get().price}"></span>-->
-<!--<span class="card-title" th:text="${shirt.get().color}"></span>-->
-<!--<span class="card-title" th:text="${shirt.get().size}"></span>-->
